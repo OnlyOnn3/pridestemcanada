@@ -1,7 +1,20 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { loadStripe } from "@stripe/stripe-js";
 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
+async function createCheckout() {
+  const stripe = await stripePromise;
+  const response = await fetch("", {
+    method: "POST",
+  });
+  const session = await response.json();
+  await stripe.redirectToCheckout({ sessionId: session.sessionId });
+}
 export default function Home() {
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -14,7 +27,8 @@ export default function Home() {
           priority
         />
         <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
+          <h1>BUTTON Test</h1>
+          <button onClick={createCheckout}>Checkout</button>
           <p>
             Looking for a starting point or more instructions? Head over to{" "}
             <a
