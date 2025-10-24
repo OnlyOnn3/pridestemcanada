@@ -1,11 +1,11 @@
-
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Link from "next/link";
-export default function HomePage() {
+
+export default function GovernancePage() {
   return (
-    <div className={styles.page}>
+     <div className={styles.page}>
       <main className={styles.main}>
-        <h1>Home</h1>
+        <h1>Governance</h1>
        
          
       </main>
@@ -15,8 +15,6 @@ export default function HomePage() {
       
       
       
-      
-    
     </div>
   );
 }

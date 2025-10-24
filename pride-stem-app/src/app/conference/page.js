@@ -1,11 +1,12 @@
-
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Link from "next/link";
-export default function HomePage() {
+
+
+export default function ConferencePage() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <h1>Home</h1>
+        <h1>Conference Information</h1>
        
          
       </main>
@@ -15,8 +16,7 @@ export default function HomePage() {
       
       
       
-      
-    
+
     </div>
   );
 }
