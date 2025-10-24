@@ -6,7 +6,7 @@ const StripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 export default async function handler(req, res)
  {
-  if (req.method !== 'POST') {
+  if (req.method === 'POST') {
     const session = await StripeInstance.checkout.sessions.create({
       payment_method_types: ['card'], //add other payment methods as needed
       line_items: [

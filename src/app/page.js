@@ -11,8 +11,14 @@ async function createCheckout() {
     method: "POST",
   });
   const session = await response.json();
+  if (!response.ok) {
+    const text = await response.text();
+    console.error("Error:", text);
+    return;
+  }
   await stripe.redirectToCheckout({ sessionId: session.sessionId });
 }
+
 export default function Home() {
 
   return (
