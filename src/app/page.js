@@ -7,7 +7,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 async function createCheckout() {
   const stripe = await stripePromise;
-  const response = await fetch("", {
+  const response = await fetch("/api/stripe-api/checkout-session/create-checkout", {
     method: "POST",
   });
   const session = await response.json();
