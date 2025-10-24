@@ -10,12 +10,17 @@ async function createCheckout() {
   const response = await fetch("/api/stripe-api/checkout-session/create-checkout", {
     method: "POST",
   });
-  
-  const session = await response.json();
+  let session;
+  try {
+    session = await response.json();
+    console.log('Checkout Session:', session);
+  } catch (err) {
+    console.error('Failed to parse JSON:', err);
+  }
+
   if (!response.ok) {
-  const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
-  console.error('Error:', errorData);
-  await stripe.redirectToCheckout({ sessionId: session.sessionId });
+    console.error('Error creating checkout session:', session.error || session);
+    return;
   }
 }
 
