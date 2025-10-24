@@ -22,6 +22,10 @@ async function createCheckout() {
     console.error('Error creating checkout session:', session.error || session);
     return;
   }
+  const result = await stripe.redirectToCheckout({ sessionId: session.sessionId });
+  if (result.error) {
+    console.error('Stripe redirect error:', result.error.message);
+  }
 }
 
 export default function Home() {
