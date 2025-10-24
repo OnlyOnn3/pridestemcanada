@@ -10,13 +10,13 @@ async function createCheckout() {
   const response = await fetch("/api/stripe-api/checkout-session/create-checkout", {
     method: "POST",
   });
+  
   const session = await response.json();
   if (!response.ok) {
-    const text = await response.text();
-    console.error("Error:", text);
-    return;
-  }
+  const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+  console.error('Error:', errorData);
   await stripe.redirectToCheckout({ sessionId: session.sessionId });
+  }
 }
 
 export default function Home() {
