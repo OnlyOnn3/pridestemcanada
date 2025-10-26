@@ -7,6 +7,12 @@
 </head>
 <body>
     <form action="submit.php" method="post" enctype="multipart/form-data">
+        <label for="occupation">Occupation</label>
+        <select name="occupation" id="">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+            <option value="temp">Temp</option>
+        </select>
         <label for="paymentMethod">Payment Method:</label>
         <select id="paymentMethod" name="paymentMethod" required>
             <option value="visa">Visa</option>
