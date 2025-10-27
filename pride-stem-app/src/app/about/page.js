@@ -7,10 +7,9 @@ export default function ConferencePage() {
      <div className={styles.page}>
       <main className={styles.main}>
         <h1>About Us</h1>
-       
          
       </main>
-      
+      <p></p>
       
       
       
