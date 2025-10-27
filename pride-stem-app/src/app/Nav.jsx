@@ -10,6 +10,7 @@ export default function Nav() {
     const items = [
         { href: "/", label: "Home" },
         { href: "/about", label: "About Us" },
+        { href: "/register", label: "Register" },
         { href: "/governance", label: "Governance" },
         { href: "/conference", label: "Conference" },
         { href: "/vendors", label: "Vendors" },
