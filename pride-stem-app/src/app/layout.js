@@ -1,6 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
-import styles from "./layout.module.css";
-import Nav from "./Nav"; // Import the client component
+import Nav from "./Nav";
 
 export const metadata = {
     title: "Pride STEM Canada",
@@ -10,19 +10,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-        <body>
-        <header className={styles.header}>
-            <div className={styles.headerInner}>
-                <p className={styles.logo}>🌈 Pride STEM Canada</p>
-                <Nav />
-            </div>
+        <body className="d-flex flex-column min-vh-100">
+        <header>
+            <Nav />
         </header>
 
-        <main className={styles.main}>{children}</main>
+        <main className="flex-grow-1 py-4">
+            <div className="container">{children}</div>
+        </main>
 
-        <footer className={styles.footer}>
-            <div className={styles.footerInner}>
-                <p>© {new Date().getFullYear()} Pride STEM Canada</p>
+        <footer className="bg-light text-center text-muted py-3 mt-auto border-top">
+            <div className="container">
+                <p className="mb-0">© {new Date().getFullYear()} Pride STEM Canada</p>
             </div>
         </footer>
         </body>
