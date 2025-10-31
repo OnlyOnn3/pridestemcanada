@@ -4,15 +4,20 @@ const StripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-10-28.acacia',
 });
 
-export default async function handler(req, res)
- {
-  try{
+const PRICE_ID = {
+  student: process.env.PRICE_ID_STUDENT,
+  teacher: process.env.PRICE_ID_TEACHER,
+  temp: process.env.PRICE_ID_TEMP,
+}
+
+export default async function handler(req, res) {
+  try {
     if (req.method === 'POST') {
       const session = await StripeInstance.checkout.sessions.create({
         payment_method_types: ['card'], //add other payment methods as needed
         line_items: [
           {
-            price: process.env.STRIPE_PRICE_ID,
+            price: PRICE_ID[req.body.occupation],
             quantity: 1,
           },
         ],
@@ -21,8 +26,8 @@ export default async function handler(req, res)
         // success_url: `${req.headers.origin}/stripe-pages/success?email=${email}`,
         cancel_url: `${req.headers.origin}/stripe-pages/failiure`,
       });
-      res.status(200).json({sessionId: session.id});
-      } else {
+      res.status(200).json({ sessionId: session.id });
+    } else {
       res.setHeader('Allow', 'POST');
       res.status(405).end('Method Not Allowed');
     }
