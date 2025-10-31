@@ -1,12 +1,8 @@
-'use client';
 import { Resend } from 'resend';
-import { useEffect } from 'react';
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
-export default function resendEmail({email}) {
- useEffect(() => {
-    if (!email) return;
+export default function resendEmail(email) {
     async function sendEmail() {
       try {
         await resend.emails.send({
@@ -20,7 +16,6 @@ export default function resendEmail({email}) {
       }
     }
     resendEmail();
-}, [email]);
-
-return null;
 }
+
+

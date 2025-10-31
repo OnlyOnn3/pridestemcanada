@@ -8,6 +8,7 @@ export default async function handler(req, res)
  {
   try{
     if (req.method === 'POST') {
+      const { email } = req.body;
       const session = await StripeInstance.checkout.sessions.create({
         payment_method_types: ['card'], //add other payment methods as needed
         line_items: [
@@ -17,8 +18,8 @@ export default async function handler(req, res)
           },
         ],
         mode: 'payment',
-      //   success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,//Implement when session ids and db are setup
-        success_url: `${req.headers.origin}/stripe-pages/success?email=${email}`,
+        success_url: `${req.headers.origin}/stripe-pages/success?session_id={CHECKOUT_SESSION_ID}`,//Implement when session ids and db are setup
+        // success_url: `${req.headers.origin}/stripe-pages/success?email=${email}`,
         cancel_url: `${req.headers.origin}/stripe-pages/failiure`,
       });
       res.status(200).json({sessionId: session.id});
