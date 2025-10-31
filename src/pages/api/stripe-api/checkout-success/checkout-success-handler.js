@@ -13,14 +13,16 @@ export default async function handler(req, res) {
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
-    const email = session.customer_email || session.customer_details?.email;
+    // const email = session.customer_email || session.customer_details?.email;
+    const email = 'ishigamicm@gmail.com';
 
    try {
     const message = await resend.emails.send({
-      from: 'ishigamicm@gmail.com',
+      from: 'sandbox@resend.dev',
       to: email,
-      subject: 'Payment Confirmation',
-      html: `<p>Here are the Event Details</p>`,
+      subject: 'BLAH BLAH BLAH',
+      html: `<p>YOU ARE A STUDENT ATTENDING THE CONFERENCE,\n
+                YOU PAID 50$</p>`,
     });
     console.log("Email sent successfully:", message);
   } catch (err) {
