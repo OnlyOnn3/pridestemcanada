@@ -12,13 +12,7 @@ export default async function handler(req, res)
         payment_method_types: ['card'], //add other payment methods as needed
         line_items: [
           {
-            price_data: {
-              currency: 'cad', 
-              product_data: {
-                name: 'Dummy ticket',
-              },
-              unit_amount: 2000, //amount in cents
-            },
+            price: process.env.STRIPE_PRICE_ID,
             quantity: 1,
           },
         ],
