@@ -9,18 +9,23 @@ export default async function handler(req, res) {
   const { sessionId } = req.query;
 
   if (!sessionId) return res.status(400).json({ error: 'Missing sessionId' });
-
+  
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
-    const email = session.customer_email || "mn334860@dal.ca";
+    const email = session.customer_email || session.customer_details?.email;
 
-    await resend.emails.send({
+   try {
+    const message = await resend.emails.send({
       from: 'ishigamicm@gmail.com',
       to: email,
       subject: 'Payment Confirmation',
       html: `<p>Here are the Event Details</p>`,
     });
+    console.log("Email sent successfully:", message);
+  } catch (err) {
+    console.error("Error sending email via Resend:", err);
+  }
 
     res.status(200).json({ session, lineItems });
   } catch (err) {
