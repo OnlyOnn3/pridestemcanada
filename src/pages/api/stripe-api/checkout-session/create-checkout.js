@@ -8,7 +8,6 @@ export default async function handler(req, res)
  {
   try{
     if (req.method === 'POST') {
-      const { email } = req.body;
       const session = await StripeInstance.checkout.sessions.create({
         payment_method_types: ['card'], //add other payment methods as needed
         line_items: [

@@ -11,12 +11,11 @@ export async function getCheckoutDetails(id) {
     const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
   return lineItems;
 }
-export default function resendEmail(email) {
-    async function sendEmail() {
+export async function resendEmail(email) {
       try {
         await resend.emails.send({
           from: 'ishigamicm@gmail.com',
-          to: email,
+          to: email?email:"mn334860@dal.ca",
           subject: 'Payment Confirmation',
           html: `<p>Here are the Event Details</p>`,
         });
@@ -24,6 +23,5 @@ export default function resendEmail(email) {
         console.error('Error sending email:', err);
       }
     }
-}
 
 
