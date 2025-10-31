@@ -18,20 +18,18 @@ export default function ConferencePage() {
           <div className={styles.aboutMain}>
             <h2 className={styles.aboutSubtitle}>About Our Conference</h2>
             <p className={styles.aboutDescription}>
-              Welcome to Pride Conference, where we celebrate diversity, inclusion, 
-              and the vibrant LGBTQ+ community. Our mission is to create a safe, 
-              empowering space for meaningful conversations, connections, and growth.
+              
             </p>
             
             <div className={styles.features}>
               <div className={styles.featureItem}>
                 <h3>Our Vision</h3>
-                <p>Building a world where everyone can live authentically and proudly.</p>
+                <p></p>
               </div>
               
               <div className={styles.featureItem}>
                 <h3>Our Mission</h3>
-                <p>To educate, inspire, and connect through powerful stories and shared experiences.</p>
+                <p>       </p>
               </div>
             </div>
           </div>
