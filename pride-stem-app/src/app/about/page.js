@@ -7,7 +7,7 @@ export default function ConferencePage() {
       <main className={styles.main}>
         <div className={styles.aboutHeader}>
           <h1 className={styles.aboutTitle}>Pride</h1>
-          <div className={styles.stepIndicator}>STEP</div>
+          <div className={styles.stepIndicator}>STEM</div>
         </div>
         
         <div className={styles.aboutContent}>
@@ -24,7 +24,9 @@ export default function ConferencePage() {
             <div className={styles.features}>
               <div className={styles.featureItem}>
                 <h3>Our Vision</h3>
-                <p></p>
+                <p>
+                  
+                </p>
               </div>
               
               <div className={styles.featureItem}>
@@ -40,8 +42,8 @@ export default function ConferencePage() {
             </button>
             
             <div className={styles.branding}>
-              <span className={styles.brandInitials}>M G</span>
-              <span className={styles.brandName}>NOREMEI</span>
+              <span className={styles.brandInitials}>PSC</span>
+              <span className={styles.brandName}>PRIDE STEM CANADA</span>
             </div>
           </div>
         </div>
