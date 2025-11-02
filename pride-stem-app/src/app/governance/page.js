@@ -51,6 +51,7 @@ export default function GovernancePage() {
 
     return (
         <div className="container py-5">
+            { /* This style component can be deleted, I moved the styling to the global CSS file. It looks great! :) */}
             <style jsx>{`
                 .pride-gradient {
                     background: linear-gradient(90deg, #ff0080, #7928ca);

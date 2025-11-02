@@ -1,7 +1,4 @@
 "use client";
-
-import styles from "./page.module.css";
-import Link from "next/link";
 export default function HomePage() {
 	let sections = [
 		{
@@ -59,7 +56,9 @@ export default function HomePage() {
             `}</style>
 
 			<div className="d-flex flex-row justify-content-around mx-auto">
-				<TextSection section={sections[0]} />
+				<div className="conainer px-3">
+					<TextSection section={sections[0]} />
+				</div>
 				{/* Picture Element is WIP */}
 				<picture>
 					<source media="(min-width:600px)" srcSet="https://placehold.co/600x400" />
@@ -76,9 +75,8 @@ export default function HomePage() {
 
 function TextSection({section}) {
 	return (
-		<section className="p-2">
-			{/* Not sure why this isn't giving the correct gradient for the headings, needs debugging. */}
-			<button className={`btn pride-btn pride-gradient w-100 fw-semibold py-3 rounded-3`}>{section.title}</button>
+		<section className="py-3">
+			<p className="h2 pride-gradient w-100 fw-semibold rounded-3 pb-5 text-center">{section.title}</p>
 			<p className="p-2 text-dark shadow-sm collapse-content">{section.body}</p>
 		</section>
 	);
