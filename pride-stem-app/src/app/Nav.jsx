@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from 'next/image';
 import { usePathname } from "next/navigation";
 
 export default function Nav() {
@@ -9,7 +10,7 @@ export default function Nav() {
     const items = [
         { href: "/", label: "Home" },
         { href: "/about", label: "About Us" },
-        { href: "/register", label: "Register" },
+        { href: "/register", label: "Conference" },
         { href: "/governance", label: "Governance" },
         { href: "/vendors", label: "Vendors" },
         { href: "/contact", label: "Contact Us" },
@@ -24,9 +25,15 @@ export default function Nav() {
         >
             <div className="container">
                 <Link href="/" className="navbar-brand fw-bold d-flex align-items-center gap-2">
-                    🌈 <span>Pride STEM Canada</span>
+                    <Image
+                        src="/img/pride-in-stem.png"  
+                        alt="Pride STEM Canada Logo"
+                        width={70} 
+                        height={60}
+                        priority
+                    />
+                    <span className="fw-bold text-light">Pride STEM Canada</span>
                 </Link>
-
                 <button
                     className="navbar-toggler border-0"
                     type="button"
