@@ -50,8 +50,10 @@ export default function VendorPage() {
                     WebkitTextFillColor: 'transparent',
                 }}
             >
-                Contact Us
+                Vendors Submission
             </h3>
+
+            <h4 className="mb-4">Want to be a vendor at the conference? Send us a message!</h4>
 
             <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                 <div className="mb-3">
