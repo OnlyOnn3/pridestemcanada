@@ -51,43 +51,6 @@ export default function GovernancePage() {
 
     return (
         <div className="container py-5">
-            { /* This style component can be deleted, I moved the styling to the global CSS file. It looks great! :) */}
-            <style jsx>{`
-                .pride-gradient {
-                    background: linear-gradient(90deg, #ff0080, #7928ca);
-                    height: 4px;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
-
-                .pride-btn {
-                    background: linear-gradient(90deg, #ff0080, #7928ca);
-                    border: none;
-                    color: white;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
-
-                .pride-btn:hover {
-                    filter: brightness(1.1);
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                }
-
-                .collapse-content {
-                    background-color: #ffffff;
-                    border: none;
-                    border-radius: 0.75rem;
-                    padding: 1.5rem;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-                    margin-top: 1rem;
-                }
-
-                body {
-                    background-color: #f8f9fa;
-                }
-            `}</style>
-
             {/* Header */}
             <div className="text-center text-dark mb-5">
                 <h1 className="fw-bold">

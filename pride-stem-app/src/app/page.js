@@ -19,42 +19,6 @@ export default function HomePage() {
 	]
 	return (
 		<div className="container py-5">
-			<style jsx>{`
-                .pride-gradient {
-                    background: linear-gradient(90deg, #ff0080, #7928ca);
-                    height: 4px;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
-
-                .pride-btn {
-                    background: linear-gradient(90deg, #ff0080, #7928ca);
-                    border: none;
-                    color: white;
-                    font-weight: 600;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                }
-
-                .pride-btn:hover {
-                    filter: brightness(1.1);
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                }
-
-                .collapse-content {
-                    background-color: #ffffff;
-                    border: none;
-                    border-radius: 0.75rem;
-                    padding: 1.5rem;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-                    margin-top: 1rem;
-                }
-
-                body {
-                    background-color: #f8f9fa;
-                }
-            `}</style>
-
 			<div className="d-flex flex-row justify-content-around mx-auto">
 				<div className="conainer px-3">
 					<TextSection section={sections[0]} />
