@@ -1,47 +1,107 @@
 "use client";
-export default function HomePage() {
-	let sections = [
-		{
-			id: "description",
-			title: "Who are we?",
-			body: "Hello! This is some text informing you about the Pride STEM conference and the organization behind it!"
-		},
-		{
-			id: "info",
-			title: "More Information",
-			body: "This is where we have more information about Pride STEM."
-		},
-		{
-			id: "contact",
-			title: "Unspecified",
-			body: "Unspecified body text."
-		}
-	]
-	return (
-		<div className="container py-5">
-			<div className="d-flex flex-row justify-content-around mx-auto">
-				<div className="conainer px-3">
-					<TextSection section={sections[0]} />
-				</div>
-				{/* Picture Element is WIP */}
-				<picture>
-					<source media="(min-width:600px)" srcSet="https://placehold.co/600x400" />
-					<source media="(min-width:1080px)" srcSet="https://placehold.co/1080x720" />
-					<source media="(min-width:1920px)" srcSet="https://placehold.co/1920x1080" />
-					<img src="https://placehold.co/600x400" className="img-fluid" />
-				</picture>
-			</div>
-			<TextSection section={sections[1]} />
-			<TextSection section={sections[2]} />
-		</div>
-	);
-}
+import { motion, useScroll, useTransform } from "framer-motion";
+import styles from "./home/home.module.css";
+import { SECTIONS } from "./home/constants";
 
-function TextSection({section}) {
-	return (
-		<section className="py-3">
-			<p className="h2 pride-gradient w-100 fw-semibold rounded-3 pb-5 text-center">{section.title}</p>
-			<p className="p-2 text-dark shadow-sm collapse-content">{section.body}</p>
-		</section>
-	);
+// Home Components
+import HeroSection from "./home/components/HeroSection";
+import TextSection from "./home/components/TextSection";
+import FeatureSection from "./home/components/FeatureSection";
+import StatsSection from "./home/components/StatsSection";
+import ParallaxCTA from "./home/components/ParallaxCTA";
+import ScrollIndicator from "./home/components/ScrollIndicator";
+
+// About Components
+import AboutHero from "./about/components/HeroSection";
+import AboutVision from "./about/components/VisionSection";
+import AboutMission from "./about/components/MissionSection";
+import AboutCTA from "./about/components/CTASection";
+
+export default function HomePage() {
+    const { scrollY } = useScroll();
+    const opacity = useTransform(scrollY, [0, 800], [1, 0.95]);
+    const scale = useTransform(scrollY, [0, 800], [1, 0.98]);
+
+    return (
+        <div>
+            <ScrollIndicator />
+            <motion.div 
+                className={styles['home-container']}
+                style={{ opacity, scale }}
+            >
+                <div className={styles['section']}>
+                    <div className={styles['section-content']}>
+                        <HeroSection section={SECTIONS[0]} />
+                    </div>
+                </div>
+
+                <div className={styles['section']}>
+                    <div className={styles['section-content']}>
+                        <FeatureSection />
+                    </div>
+                </div>
+
+                <div className={styles['section']}>
+                    <div className={styles['section-content']}>
+                        <TextSection section={SECTIONS[1]} />
+                    </div>
+                </div>
+
+                <div className={styles['section']}>
+                    <div className={styles['section-content']}>
+                        <StatsSection />
+                    </div>
+                </div>
+
+                <div className={styles['section']}>
+                    <div className={styles['section-content']}>
+                        <TextSection section={SECTIONS[2]} />
+                    </div>
+                </div>
+
+                {/* About Page Section */}
+                <motion.div
+                    className={styles['section']}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <AboutHero 
+                        headerOpacity={useTransform(scrollY, [800, 1000], [0, 1])}
+                        headerY={useTransform(scrollY, [800, 1000], [50, 0])}
+                        scale={useTransform(scrollY, [800, 1000], [0.95, 1])}
+                    />
+                </motion.div>
+
+                <motion.div
+                    className={styles['section']}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <AboutVision />
+                </motion.div>
+
+                <motion.div
+                    className={styles['section']}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <AboutMission />
+                </motion.div>
+
+                <motion.div
+                    className={styles['section']}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                >
+                    <AboutCTA />
+                </motion.div>
+
+                <ParallaxCTA />
+            </motion.div>
+        </div>
+    );
 }
