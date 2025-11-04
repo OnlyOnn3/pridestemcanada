@@ -1,0 +1,29 @@
+.about-container {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.hero-section,
+.vision-section,
+.mission-section,
+.cta-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(255,0,128,0.05), rgba(121,40,202,0.05));
+}
+
+.vision-section,
+.mission-section {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, rgba(255,0,128,0.05), rgba(121,40,202,0.05));
+}
