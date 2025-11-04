@@ -42,12 +42,12 @@ export default function FeatureSection() {
                             initial={{ y: 50, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ 
-                                duration: 0.5,
-                                delay: index * 0.2
+                                duration: 0.35,
+                                delay: index * 0.15
                             }}
                             whileHover={{ 
                                 y: -10,
-                                transition: { duration: 0.2 }
+                                transition: { duration: 0.15 }
                             }}
                         >
                             <div className="card-body text-center p-4">
@@ -56,8 +56,8 @@ export default function FeatureSection() {
                                     initial={{ scale: 0.5 }}
                                     whileInView={{ scale: 1 }}
                                     transition={{ 
-                                        duration: 0.5,
-                                        delay: index * 0.2 + 0.3
+                                        duration: 0.35,
+                                        delay: index * 0.15 + 0.2
                                     }}
                                 >
                                     {feature.icon}

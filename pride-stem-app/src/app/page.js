@@ -9,7 +9,6 @@ import TextSection from "./home/components/TextSection";
 import FeatureSection from "./home/components/FeatureSection";
 import StatsSection from "./home/components/StatsSection";
 import ParallaxCTA from "./home/components/ParallaxCTA";
-import ScrollIndicator from "./home/components/ScrollIndicator";
 
 // About Components
 import AboutHero from "./about/components/HeroSection";
@@ -24,7 +23,6 @@ export default function HomePage() {
 
     return (
         <div>
-            <ScrollIndicator />
             <motion.div 
                 className={styles['home-container']}
                 style={{ opacity, scale }}

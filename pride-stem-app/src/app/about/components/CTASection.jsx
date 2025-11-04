@@ -14,7 +14,7 @@ export default function CTASection({ isHovered, setIsHovered }) {
                     className="display-2 fw-bold mb-5"
                     initial={{ y: 50, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.35 }}
                     style={{
                         background: COLORS.gradientText,
                         WebkitBackgroundClip: "text",

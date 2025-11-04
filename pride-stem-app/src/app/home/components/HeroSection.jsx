@@ -17,7 +17,7 @@ export default function HeroSection({ section }) {
                         className="h1 pride-gradient w-100 fw-bold rounded-3 pb-5"
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.35 }}
                     >
                         {section.title}
                     </motion.p>

@@ -1,17 +1,16 @@
 .about-container {
-    height: 100vh;
-    overflow-y: auto;
+    min-height: 100vh;
     overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
 }
 
 .hero-section,
 .vision-section,
 .mission-section,
 .cta-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-section {

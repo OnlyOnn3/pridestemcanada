@@ -42,7 +42,7 @@ export default function ParallaxCTA() {
                             }}
                             initial={{ y: 50, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.35 }}
                         >
                             Ready to Join the Community?
                         </motion.h2>
@@ -50,7 +50,7 @@ export default function ParallaxCTA() {
                             className="lead mb-4"
                             initial={{ y: 30, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
+                            transition={{ duration: 0.35, delay: 0.1 }}
                         >
                             Be part of a growing network of 2SLGBTQ+ professionals in STEM
                         </motion.p>
@@ -60,7 +60,7 @@ export default function ParallaxCTA() {
                             whileInView={{ scale: 1, opacity: 1 }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            transition={{ duration: 0.4, delay: 0.4 }}
+                            transition={{ duration: 0.3, delay: 0.25 }}
                         >
                             Register Now
                         </motion.button>

@@ -19,16 +19,16 @@ export const ANIMATIONS = {
     slideInLeft: {
         initial: { x: -100, opacity: 0 },
         whileInView: { x: 0, opacity: 1 },
-        transition: { duration: 0.8 },
+        transition: { duration: 0.35 },
     },
     slideInRight: {
         initial: { x: 100, opacity: 0 },
         whileInView: { x: 0, opacity: 1 },
-        transition: { duration: 0.8 },
+        transition: { duration: 0.35 },
     },
     scaleIn: {
         initial: { scale: 0.8, opacity: 0 },
         whileInView: { scale: 1, opacity: 1 },
-        transition: { duration: 0.8 },
+        transition: { duration: 0.35 },
     },
 };
