@@ -5,20 +5,6 @@ import { collection, query, where, getDocs, updateDoc, doc, addDoc } from "fireb
 
 export default function Success() {
   useEffect(() => {
-    async function sendEmail() {
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST', 
-        });
-        const data = await response.json();
-        console.log('Email API response:', data);
-      } catch (error) {
-        console.error('Error sending email:', error);
-      }
-    }
-
-    sendEmail();
-  }, []);
     async function finalizeRegistration() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
@@ -40,6 +26,22 @@ export default function Success() {
       } catch (error) {
         console.error("Registration error.", error);
       }
+
+        useEffect(() => {
+    async function sendEmail() {
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST', 
+        });
+        const data = await response.json();
+        console.log('Email API response:', data);
+      } catch (error) {
+        console.error('Error sending email:', error);
+      }
+    }
+
+    sendEmail();
+  }, []);
     }
 
     finalizeRegistration();
