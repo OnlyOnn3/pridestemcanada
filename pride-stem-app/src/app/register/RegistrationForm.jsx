@@ -75,14 +75,7 @@ export default function RegistrationForm() {
   //Form frontend
   return (
     <div className="bg-white p-4 rounded-3 shadow-sm">
-      <h3
-        className="mb-4 text-center fw-bold"
-        style={{
-          background: "linear-gradient(90deg, #ff0080, #7928ca)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
+      <h3 className="mb-4 text-center fw-bold" style={{ background: 'linear-gradient(90deg, #ff0080, #7928ca)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         Conference Registration
       </h3>
 
