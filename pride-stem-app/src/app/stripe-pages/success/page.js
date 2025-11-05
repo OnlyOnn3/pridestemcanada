@@ -23,7 +23,7 @@ export default function Success() {
           });
         });
 
-      const response = await fetch('/api/send-email', { method: 'POST' });
+      const response = await fetch('/api/resend-api/send-email', { method: 'POST' });
       if (!response.ok) {
         console.error('Failed to send confirmation email');
       }
