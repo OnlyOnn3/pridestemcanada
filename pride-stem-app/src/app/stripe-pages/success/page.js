@@ -23,28 +23,21 @@ export default function Success() {
           });
         });
 
-      } catch (error) {
-        console.error("Registration error.", error);
+      const response = await fetch('/api/send-email', { method: 'POST' });
+      if (!response.ok) {
+        console.error('Failed to send confirmation email');
       }
 
-        useEffect(() => {
-    async function sendEmail() {
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST', 
-        });
-        const data = await response.json();
-        console.log('Email API response:', data);
-      } catch (error) {
-        console.error('Error sending email:', error);
-      }
+    } catch (error) {
+      console.error('Error finalizing registration or sending email:', error);
     }
+      
 
-    sendEmail();
-  }, []);
     }
+    
 
     finalizeRegistration();
+    
   }, []);
 
   return <h1>Payment Successful! Your registration is complete.</h1>;
