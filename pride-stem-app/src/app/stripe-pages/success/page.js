@@ -1,28 +1,35 @@
 'use client';
 import { useEffect } from 'react';
-export default function Success() {
+import { db } from "../../firebaseConfig";
+import { collection, query, where, getDocs, updateDoc, doc, addDoc } from "firebase/firestore";
 
+export default function Success() {
   useEffect(() => {
-    async function fetchCheckoutDetails() {
+    async function finalizeRegistration() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const sessionId = urlParams.get('session_id');
-      if (sessionId) {
-        const response = await fetch(`/api/stripe-api/checkout-success/checkout-success-handler?sessionId=${sessionId}`);
-        const data = await response.json();
-        console.log('Checkout Session Data:', data);
-        } 
-      }catch (error) {
-          console.error('Error fetching checkout details or sending email:', error);
-        }
-    }
-    fetchCheckoutDetails();
-  }, []);
- 
+        if (!sessionId) return;
+        const q = query(collection(db, "registrations_pending"), where("sessionId", "==", sessionId));
+        const querySnapshot = await getDocs(q);
 
-  return (<div>
-    <h1>Stripe API Success Endpoint</h1>
-     
-  
-  </div>);
+        querySnapshot.forEach(async (document) => {
+          const docRef = doc(db, "registrations_pending", document.id);
+          await updateDoc(docRef, { status: "paid", paidAt: new Date() });
+          await addDoc(collection(db, "registrations"), {
+            ...document.data(),
+            status: "paid",
+            paidAt: new Date(),
+          });
+        });
+
+      } catch (error) {
+        console.error("Registration error.", error);
+      }
+    }
+
+    finalizeRegistration();
+  }, []);
+
+  return <h1>Payment Successful! Your registration is complete.</h1>;
 }

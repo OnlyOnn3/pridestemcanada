@@ -4,6 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { db } from "../firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
@@ -11,33 +14,65 @@ export default function RegistrationForm() {
     email: "",
     occupation: "",
     affiliation: "",
-    dietary: ""
+    dietary: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  //Stripe payment
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await addDoc(collection(db, "registrations"), formData);
-      alert("Registration successful!");
 
-      setFormData({
-        name: "",
-        email: "",
-        occupation: "",
-        affiliation: "",
-        dietary: ""
+    if (!formData.occupation) {
+      alert("Please select an occupation.");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/stripe-api/checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ occupation: formData.occupation }),
       });
+
+      const session = await response.json();
+
+      if (!response.ok) {
+        console.error("Error creating checkout session:", session.error);
+        alert("Payment Failed, please try again.");
+        setIsLoading(false);
+        return;
+      }
+
+      await addDoc(collection(db, "registrations_pending"), {
+        ...formData,
+        status: "pending",
+        sessionId: session.sessionId,
+        createdAt: new Date(),
+      });
+
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({ sessionId: session.sessionId });
+      if (error) {
+        console.error("Stripe error", error.message);
+        alert("Stripe error, please try again.");
+      }
+
     } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("Something went wrong. Please try again.");
+      console.error("Registration error:", error);
+      alert("Registration error, please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  //Form frontend
   return (
     <div className="bg-white p-4 rounded-3 shadow-sm">
       <h3
@@ -105,10 +140,7 @@ export default function RegistrationForm() {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="affiliation-input"
-            className="form-label fw-semibold"
-          >
+          <label htmlFor="affiliation-input" className="form-label fw-semibold">
             Affiliation/Organization
           </label>
           <input
@@ -138,18 +170,11 @@ export default function RegistrationForm() {
         </div>
 
         <div className="d-grid">
-          <button
-            type="submit"
-            className="btn btn-lg fw-bold text-white"
-            style={{
-              background: "linear-gradient(90deg, #ff0080, #7928ca)",
-              transition: "all 0.3s ease",
-            }}
-            onMouseOver={(e) => (e.target.style.filter = "brightness(1.1)")}
-            onMouseOut={(e) => (e.target.style.filter = "brightness(1)")}
-          >
-            Submit Registration
-          </button>
+        <button
+          type="submit"
+          className="btn btn-lg fw-bold text-white"
+            style={{background: "linear-gradient(90deg, #ff0080, #7928ca)",border: "none",}}>Pay Now
+        </button>
         </div>
       </form>
     </div>
