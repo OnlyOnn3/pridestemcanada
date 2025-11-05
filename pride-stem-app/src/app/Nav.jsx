@@ -18,9 +18,10 @@ export default function Nav() {
 
     return (
         <nav
-            className="navbar navbar-expand-lg navbar-dark shadow-sm"
+            className="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top"
             style={{
                 background: "linear-gradient(90deg, #ff0080, #7928ca)",
+                zIndex: 1000
             }}
         >
             <div className="container">
