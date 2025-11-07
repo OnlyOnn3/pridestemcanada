@@ -1,0 +1,253 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  padding: 0.75rem 0;
+  border-bottom: 3px solid;
+  border-image: var(--nav-border-gradient) 1;
+}
+
+.navContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #1a1a1a;
+  transition: transform 0.3s ease;
+}
+
+.navBrand:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  display: block;
+}
+
+.brandText {
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+  background: var(--nav-border-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navigation Menu */
+.navMenu {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #2a2a2a;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: var(--nav-border-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navLink.active {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.navLink:focus-visible {
+  color: var(--primary);
+  outline: none;
+  box-shadow: inset 0 -3px 0 rgba(117, 8, 135, 0.35);
+}
+
+/* CTA Button - Donate */
+.ctaButton {
+  background: var(--cta-gradient);
+  color: white !important;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem !important;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px var(--cta-shadow);
+}
+
+.ctaButton::after {
+  display: none;
+}
+
+.ctaButton:hover {
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(117, 8, 135, 0.38);
+}
+
+/* Mobile Toggle Button */
+.mobileToggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #2a2a2a;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background: #2a2a2a;
+  border-radius: 3px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+.hamburger.active {
+  background: transparent;
+}
+
+.hamburger.active::before {
+  transform: rotate(45deg) translateY(11px);
+}
+
+.hamburger.active::after {
+  transform: rotate(-45deg) translateY(-11px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .mobileToggle {
+    display: flex;
+  }
+
+  .navMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .navMenu.active {
+    max-height: 400px;
+  }
+
+  .navLink {
+    padding: 1rem 1.5rem;
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .navLink::after {
+    display: none;
+  }
+
+  .navLink.active {
+    background: linear-gradient(90deg, rgba(228, 3, 3, 0.08), rgba(85, 205, 252, 0.08));
+    border-left: 4px solid;
+    border-image: linear-gradient(180deg, var(--pride-red), var(--pride-purple)) 1;
+  }
+
+  .ctaButton {
+    margin: 0.5rem 1.5rem;
+    width: calc(100% - 3rem);
+    text-align: center;
+  }
+
+  .brandText {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navBrand {
+    gap: 0.5rem;
+  }
+
+  .logo {
+    width: 40px;
+    height: 36px;
+  }
+
+  .navLink {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}

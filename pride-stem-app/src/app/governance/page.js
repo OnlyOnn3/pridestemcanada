@@ -1,88 +1,245 @@
 "use client";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-import RegistrationForm from "../register/RegistrationForm";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import styles from "./governance.module.css";
+
+const fadeInUp = {
+    initial: { y: 40, opacity: 0 },
+    whileInView: { y: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+};
 
 export default function GovernancePage() {
-    const [active, setActive] = useState(null);
-
-    const toggleSection = (id) => {
-        setActive(active === id ? null : id);
-    };
-
-    const sections = [
-        {
-            id: "attendee",
-            title: "Attendee Information",
-            content: (
-                <p className="mb-0 text-dark">
-                    Learn more about the conference venue, accessibility, and travel
-                    details. We aim to create an inclusive, accessible environment for all
-                    participants.
-                </p>
-            ),
-        },
-        {
-            id: "online",
-            title: "Attend Online",
-            content: (
-                <p className="mb-0 text-dark">
-                    Can’t make it to Toronto? Attend virtually via our online platform
-                    with full live streaming and interactive sessions.
-                </p>
-            ),
-        },
-        {
-            id: "register",
-            title: "Registration",
-            content: <RegistrationForm />,
-        },
-        {
-            id: "schedule",
-            title: "Schedule",
-            content: (
-                <p className="mb-0 text-dark">
-                    The full event schedule will be announced soon. Stay tuned for keynote
-                    speakers and panel discussions from top STEM leaders.
-                </p>
-            ),
-        },
-    ];
-
     return (
-        <div className="container py-5">
-            {/* Header */}
-            <div className="text-center text-dark mb-5">
-                <h1 className="fw-bold">
-                    Join us for the 6th Annual Canadian 2SLGBTQ+ in STEM Conference!
-                </h1>
-                <p className="text-secondary fs-5">
-                    Hosted in Toronto, this conference connects innovators and leaders to
-                    celebrate diversity, inclusion, and excellence in STEM. 🌈
-                </p>
-            </div>
+        <div className={styles.governancePage}>
+            {/* Hero Section */}
+            <motion.section className={styles.heroSection} {...fadeInUp}>
+                <div className={styles.heroContent}>
+                    <motion.div 
+                        className={styles.badge}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        Non-Profit Excellence
+                    </motion.div>
+                    <h1 className={styles.heroTitle}>
+                        Governance & <span className={styles.gradientText}>Organization</span>
+                    </h1>
+                    <p className={styles.heroSubtitle}>
+                        Pride STEM Canada operates as a transparent, accountable non-profit organization 
+                        dedicated to creating inclusive spaces for 2SLGBTQ+ individuals in STEM fields.
+                    </p>
+                </div>
+            </motion.section>
 
-            {/* Accordion Buttons */}
-            <div className="mx-auto" style={{ maxWidth: "800px" }}>
-                {sections.map((section) => (
-                    <div key={section.id} className="mb-3">
-                        <button
-                            className={`btn pride-btn w-100 fw-semibold py-3 rounded-3 ${
-                                active === section.id ? "opacity-100" : "opacity-90"
-                            }`}
-                            onClick={() => toggleSection(section.id)}
-                        >
-                            {section.title}
-                        </button>
-
-                        {active === section.id && (
-                            <div className="collapse-content mt-2 shadow-sm">
-                                {section.content}
-                            </div>
-                        )}
+            {/* Core Values Grid */}
+            <motion.section className={styles.valuesSection} {...fadeInUp}>
+                <div className={styles.sectionContainer}>
+                    <h2 className={styles.sectionTitle}>Our Core Values</h2>
+                    <div className={styles.valuesGrid}>
+                        {[
+                            { icon: "⚖️", title: "Integrity", desc: "Operating with honesty and ethical standards in all our activities" },
+                            { icon: "🔍", title: "Transparency", desc: "Open communication and accountability to our community" },
+                            { icon: "🌈", title: "Inclusivity", desc: "Welcoming all 2SLGBTQ+ voices and experiences in STEM" },
+                            { icon: "✨", title: "Excellence", desc: "Commitment to quality and best practices in everything we do" },
+                        ].map((value, idx) => (
+                            <motion.div 
+                                key={idx}
+                                className={styles.valueCard}
+                                initial={{ y: 20, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            >
+                                <div className={styles.valueIcon}>{value.icon}</div>
+                                <h3>{value.title}</h3>
+                                <p>{value.desc}</p>
+                            </motion.div>
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
+            </motion.section>
+
+            {/* Main Content Grid */}
+            <section className={styles.contentSection}>
+                <div className={styles.sectionContainer}>
+                    <div className={styles.contentGrid}>
+                        {/* Non-Profit Organization */}
+                        <motion.div className={styles.contentCard} {...fadeInUp}>
+                            <div className={styles.cardHeader}>
+                                <div className={styles.cardIcon}>📋</div>
+                                <h2>Non-Profit Organization</h2>
+                            </div>
+                            <div className={styles.cardContent}>
+                                <p>
+                                    Pride STEM Canada is a registered Canadian non-profit organization dedicated to 
+                                    advancing 2SLGBTQ+ representation and inclusion in Science, Technology, Engineering, 
+                                    and Mathematics fields across Canada.
+                                </p>
+                                <p>
+                                    As a non-profit, we are committed to transparency, accountability, and serving our 
+                                    community's best interests. Our operations are guided by our bylaws and governed by 
+                                    a dedicated board of directors.
+                                </p>
+                                <div className={styles.highlightBox}>
+                                    <h4>Our Non-Profit Status</h4>
+                                    <ul>
+                                        <li>Registered Canadian Non-Profit Corporation</li>
+                                        <li>Governed by federal and provincial non-profit legislation</li>
+                                        <li>All donations support our mission and programs</li>
+                                        <li>Annual financial reporting and transparency</li>
+                                        <li>Member-driven organization with democratic governance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Bylaws */}
+                        <motion.div className={styles.contentCard} {...fadeInUp}>
+                            <div className={styles.cardHeader}>
+                                <div className={styles.cardIcon}>📜</div>
+                                <h2>Bylaws & Governance</h2>
+                            </div>
+                            <div className={styles.cardContent}>
+                                <p>
+                                    Our bylaws establish the rules and procedures that govern Pride STEM Canada's 
+                                    operations, ensuring accountability, transparency, and effective management.
+                                </p>
+                                
+                                <div className={styles.twoColumnList}>
+                                    <div className={styles.listColumn}>
+                                        <h4>Key Provisions</h4>
+                                        <ul>
+                                            <li><strong>Membership</strong> - Eligibility, rights, and responsibilities</li>
+                                            <li><strong>Board of Directors</strong> - Composition and election procedures</li>
+                                            <li><strong>Meetings</strong> - AGM and special meeting protocols</li>
+                                        </ul>
+                                    </div>
+                                    <div className={styles.listColumn}>
+                                        <h4>Governance Principles</h4>
+                                        <ul>
+                                            <li>Elected Board of Directors</li>
+                                            <li>Regular board and annual meetings</li>
+                                            <li>Transparent decision-making</li>
+                                            <li>Conflict of interest policies</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div className={styles.noteBox}>
+                                    <strong>📄 Request Bylaws:</strong> Full bylaws are available to members. 
+                                    Contact us to request a copy.
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* CIANP */}
+                        <motion.div className={styles.contentCard} {...fadeInUp}>
+                            <div className={styles.cardHeader}>
+                                <div className={styles.cardIcon}>🤝</div>
+                                <h2>CIANP Membership</h2>
+                            </div>
+                            <div className={styles.cardContent}>
+                                <p>
+                                    Pride STEM Canada is affiliated with the Canadian Institute for the Advancement of 
+                                    Non-Profits (CIANP), demonstrating our commitment to non-profit excellence and 
+                                    best practices.
+                                </p>
+
+                                <h4>CIANP Support Includes</h4>
+                                <div className={styles.benefitsGrid}>
+                                    <div className={styles.benefit}>
+                                        <span className={styles.benefitIcon}>📚</span>
+                                        <span>Professional development & training</span>
+                                    </div>
+                                    <div className={styles.benefit}>
+                                        <span className={styles.benefitIcon}>⚙️</span>
+                                        <span>Governance best practices</span>
+                                    </div>
+                                    <div className={styles.benefit}>
+                                        <span className={styles.benefitIcon}>🔗</span>
+                                        <span>Networking opportunities</span>
+                                    </div>
+                                    <div className={styles.benefit}>
+                                        <span className={styles.benefitIcon}>📣</span>
+                                        <span>Sector advocacy</span>
+                                    </div>
+                                    <div className={styles.benefit}>
+                                        <span className={styles.benefitIcon}>🏆</span>
+                                        <span>Standards & certification</span>
+                                    </div>
+                                    <div className={styles.benefit}>
+                                        <span className={styles.benefitIcon}>🎯</span>
+                                        <span>Expert resources</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Transparency */}
+                        <motion.div className={styles.contentCard} {...fadeInUp}>
+                            <div className={styles.cardHeader}>
+                                <div className={styles.cardIcon}>🔍</div>
+                                <h2>Transparency & Accountability</h2>
+                            </div>
+                            <div className={styles.cardContent}>
+                                <p>
+                                    We operate with the highest standards of transparency and accountability to our 
+                                    members, donors, and the broader 2SLGBTQ+ STEM community.
+                                </p>
+
+                                <div className={styles.twoColumnList}>
+                                    <div className={styles.listColumn}>
+                                        <h4>Financial Transparency</h4>
+                                        <ul>
+                                            <li>Annual financial statements</li>
+                                            <li>Regular financial reporting</li>
+                                            <li>Independent financial reviews</li>
+                                            <li>Clear donation usage reporting</li>
+                                        </ul>
+                                    </div>
+                                    <div className={styles.listColumn}>
+                                        <h4>Operational Accountability</h4>
+                                        <ul>
+                                            <li>Documented board meetings</li>
+                                            <li>Annual general meetings</li>
+                                            <li>Clear policies & procedures</li>
+                                            <li>Feedback mechanisms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div className={styles.ctaBox}>
+                                    <p>Questions about our governance or bylaws?</p>
+                                    <Link href="/contact" className={styles.ctaButton}>
+                                        Contact Us
+                                    </Link>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Bottom CTA */}
+            <motion.section className={styles.bottomCTA} {...fadeInUp}>
+                <div className={styles.ctaContent}>
+                    <h2>Get Involved With Pride STEM Canada</h2>
+                    <p>Join us in creating a more inclusive STEM community</p>
+                    <div className={styles.ctaButtons}>
+                        <Link href="/register" className={styles.primaryButton}>
+                            Register for Conference
+                        </Link>
+                        <Link href="/vendors" className={styles.secondaryButton}>
+                            Become a Sponsor
+                        </Link>
+                    </div>
+                </div>
+            </motion.section>
         </div>
     );
 }

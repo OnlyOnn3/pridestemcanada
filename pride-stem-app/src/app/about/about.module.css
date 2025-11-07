@@ -1,28 +1,621 @@
-.about-container {
+/* About Page Styles */
+.aboutPage {
+    width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-.hero-section,
-.vision-section,
-.mission-section,
-.cta-section {
-    min-height: 100vh;
+/* Hero Section */
+.heroSection {
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 6rem 1rem 4rem;
+    background: linear-gradient(135deg, rgba(228, 3, 3, 0.08), rgba(255, 140, 0, 0.08), rgba(255, 237, 0, 0.08), rgba(0, 128, 38, 0.08), rgba(0, 77, 255, 0.08), rgba(117, 7, 135, 0.08));
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-section {
-    background: linear-gradient(135deg, rgba(255,0,128,0.05), rgba(121,40,202,0.05));
+.heroSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(117, 7, 135, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 128, 38, 0.12) 0%, transparent 50%);
+    pointer-events: none;
 }
 
-.vision-section,
-.mission-section {
+.heroContent {
+    max-width: 900px;
+    text-align: center;
     position: relative;
     z-index: 1;
 }
 
-.cta-section {
-    background: linear-gradient(135deg, rgba(255,0,128,0.05), rgba(121,40,202,0.05));
+.badge {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, rgba(117, 7, 135, 0.15), rgba(0, 128, 38, 0.15));
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(117, 7, 135, 0.2);
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+}
+
+.gradientText {
+    background: linear-gradient(135deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.heroSubtitle {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* Mission & Vision Section */
+.missionVisionSection {
+    padding: 5rem 1rem;
+    background: var(--background);
+}
+
+.sectionContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionTitle {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    color: var(--foreground);
+}
+
+.mvGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 3rem;
+}
+
+.mvCard {
+    padding: 3rem;
+    background: var(--background);
+    border-radius: 20px;
+    border: 2px solid var(--border-light);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mvCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mvCard:hover::before {
+    transform: scaleX(1);
+}
+
+.mvCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(117, 7, 135, 0.15);
+    border-color: var(--primary);
+}
+
+.mvIcon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.mvCard h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--foreground);
+}
+
+.mvCard p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.mvList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mvList li {
+    padding: 0.75rem 0 0.75rem 2.5rem;
+    position: relative;
+    font-size: 1.05rem;
+    color: var(--text-light);
+}
+
+.mvList li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Story Section */
+.storySection {
+    padding: 5rem 1rem;
+    background: var(--surface-rainbow-soft);
+}
+
+.storyContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.storyCard {
+    padding: 2.5rem;
+    background: var(--background);
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.storyCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.storyYear {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: var(--cta-gradient);
+    color: white;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.storyCard h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
+
+.storyCard p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* What We Do Section */
+.whatWeDoSection {
+    padding: 5rem 1rem;
+    background: var(--background);
+}
+
+.activitiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.activityCard {
+    padding: 2.5rem;
+    background: var(--background);
+    border-radius: 20px;
+    border: 2px solid var(--border-light);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.activityCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.activityCard:hover::before {
+    transform: scaleX(1);
+}
+
+.activityCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(117, 7, 135, 0.15);
+    border-color: var(--primary);
+}
+
+.activityIcon {
+    font-size: 3.5rem;
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.activityCard:hover .activityIcon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.activityCard h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
+
+.activityCard p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Impact Stats Section */
+.impactSection {
+    padding: 5rem 1rem;
+    background: linear-gradient(135deg, rgba(117, 7, 135, 0.08), rgba(0, 128, 38, 0.08));
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.statCard {
+    padding: 3rem 2rem;
+    background: var(--background);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.statCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.statNumber {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #750787, #008026);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.statLabel {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+/* Values Section */
+.valuesSection {
+    padding: 5rem 1rem;
+    background: var(--background);
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.valueCard {
+    padding: 2.5rem;
+    background: var(--background);
+    border-radius: 20px;
+    border: 2px solid var(--border-light);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.valueCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.valueCard:hover::before {
+    transform: scaleX(1);
+}
+
+.valueCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(117, 7, 135, 0.15);
+    border-color: var(--primary);
+}
+
+.valueIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.valueCard:hover .valueIcon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.valueCard h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+}
+
+.valueCard p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* CTA Section */
+.ctaSection {
+    padding: 6rem 1rem;
+    background: linear-gradient(135deg, rgba(117, 7, 135, 0.1), rgba(0, 128, 38, 0.1));
+    text-align: center;
+}
+
+.ctaContent {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.ctaContent h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+}
+
+.ctaContent p {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.primaryButton {
+    padding: 1.25rem 3rem;
+    background: var(--cta-gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(117, 8, 135, 0.3);
+    display: inline-block;
+}
+
+.primaryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(117, 8, 135, 0.4);
+    color: white;
+}
+
+.secondaryButton {
+    padding: 1.25rem 3rem;
+    background: transparent;
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.secondaryButton:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .heroTitle {
+        font-size: 2.75rem;
+    }
+
+    .mvGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        padding: 5rem 1rem 3rem;
+        min-height: 60vh;
+    }
+
+    .heroTitle {
+        font-size: 2.25rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .sectionTitle {
+        font-size: 2.25rem;
+    }
+
+    .mvCard {
+        padding: 2rem;
+    }
+
+    .mvIcon {
+        font-size: 3rem;
+    }
+
+    .mvCard h2 {
+        font-size: 1.85rem;
+    }
+
+    .storyContent,
+    .activitiesGrid,
+    .valuesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .ctaContent h2 {
+        font-size: 2.25rem;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroSection {
+        padding: 4rem 1rem 2.5rem;
+    }
+
+    .badge {
+        font-size: 0.85rem;
+        padding: 0.5rem 1.25rem;
+    }
+
+    .heroTitle {
+        font-size: 1.85rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.85rem;
+    }
+
+    .mvCard {
+        padding: 1.75rem;
+    }
+
+    .mvIcon {
+        font-size: 2.5rem;
+    }
+
+    .mvCard h2 {
+        font-size: 1.65rem;
+    }
+
+    .storyCard,
+    .activityCard,
+    .valueCard {
+        padding: 2rem;
+    }
+
+    .activityIcon,
+    .valueIcon {
+        font-size: 2.75rem;
+    }
+
+    .statCard {
+        padding: 2rem 1.5rem;
+    }
+
+    .statNumber {
+        font-size: 3rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaContent h2 {
+        font-size: 1.85rem;
+    }
+
+    .ctaContent p {
+        font-size: 1.1rem;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        font-size: 1.05rem;
+        padding: 1.125rem 2.5rem;
+    }
 }

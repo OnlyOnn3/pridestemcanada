@@ -3,66 +3,66 @@
 import Link from "next/link";
 import Image from 'next/image';
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import styles from "./Nav.module.css";
 
 export default function Nav() {
     const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
 
     const items = [
         { href: "/", label: "Home" },
-        { href: "/about", label: "About Us" },
+        { href: "/about", label: "About" },
         { href: "/register", label: "Conference" },
         { href: "/governance", label: "Governance" },
-        { href: "/vendors", label: "Vendors" },
-        { href: "/contact", label: "Contact Us" },
+        { href: "/vendors", label: "Sponsors" },
+        { href: "/contact", label: "Contact" },
     ];
 
+    const toggleMenu = () => setIsOpen(!isOpen);
+
     return (
-        <nav
-            className="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top"
-            style={{
-                background: "linear-gradient(90deg, #ff0080, #7928ca)",
-                zIndex: 1000
-            }}
-        >
-            <div className="container">
-                <Link href="/" className="navbar-brand fw-bold d-flex align-items-center gap-2">
+        <nav className={styles.navbar}>
+            <div className={styles.navContainer}>
+                {/* Logo */}
+                <Link href="/" className={styles.navBrand}>
                     <Image
                         src="/img/pride-in-stem.png"  
                         alt="Pride STEM Canada Logo"
-                        width={70} 
-                        height={60}
+                        width={50} 
+                        height={45}
                         priority
+                        className={styles.logo}
                     />
-                    <span className="fw-bold text-light">Pride STEM Canada</span>
+                    <span className={styles.brandText}>Pride STEM</span>
                 </Link>
-                <button
-                    className="navbar-toggler border-0"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#mainNav"
-                    aria-controls="mainNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
+
+                {/* Mobile Toggle */}
+                <button 
+                    className={styles.mobileToggle}
+                    onClick={toggleMenu}
+                    aria-label="Toggle menu"
+                    aria-expanded={isOpen}
                 >
-                    <span className="navbar-toggler-icon"></span>
+                    <span className={`${styles.hamburger} ${isOpen ? styles.active : ""}`}></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="mainNav">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        {items.map(({ href, label }) => (
-                            <li className="nav-item" key={href}>
-                                <Link
-                                    href={href}
-                                    className={`nav-link ${
-                                        pathname === href ? "active fw-semibold text-light border-bottom border-white" : "text-light"
-                                    }`}
-                                >
-                                    {label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                {/* Navigation Links */}
+                <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
+                    {items.map(({ href, label }) => (
+                        <li className={styles.navItem} key={href}>
+                            <Link
+                                href={href}
+                                className={`${styles.navLink} ${
+                                    pathname === href ? styles.active : ""
+                                }`}
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </nav>
     );

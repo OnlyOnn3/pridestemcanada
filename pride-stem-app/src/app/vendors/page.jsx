@@ -1,10 +1,8 @@
 "use client";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import styles from "../page.module.css";
 import Link from "next/link";
-
+import styles from "./vendors.module.css";
 
 export default function VendorPage() {
     const [form, setForm] = useState({ email: "", message: "" });
@@ -41,77 +39,105 @@ export default function VendorPage() {
     };
 
     return (
-        <div className="bg-white p-4 rounded-3 shadow-sm my-5 mx-auto" style={{ maxWidth: '600px' }}>
-            <h3
-                className="mb-4 text-center fw-bold"
-                style={{
-                    background: 'linear-gradient(90deg, #ff0080, #7928ca)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                }}
-            >
-                Vendors Submission
-            </h3>
+        <div className={styles.container}>
+            {/* Header */}
+            <div className={styles.header}>
+                <h1>Become a Sponsor</h1>
+                <p>Partner with Pride STEM Canada and support the next generation of LGBTQ2+ professionals in STEM.</p>
+            </div>
 
-            <h4 className="mb-4">Want to be a vendor at the conference? Send us a message!</h4>
-
-            <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label fw-semibold">Your Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        required
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="email@example.com"
-                        className="form-control form-control-lg shadow-sm"
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label htmlFor="message" className="form-label fw-semibold">Your Message</label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        rows="5"
-                        required
-                        value={form.message}
-                        onChange={handleChange}
-                        placeholder="Type your message here..."
-                        className="form-control form-control-lg shadow-sm"
-                    />
-                </div>
-
-                <div className="d-grid">
-                    <button
-                        type="submit"
-                        disabled={status === "sending"}
-                        className="btn btn-lg fw-bold text-white"
-                        style={{
-                            background: 'linear-gradient(90deg, #ff0080, #7928ca)',
-                            transition: 'all 0.3s ease',
-                        }}
-                        onMouseOver={(e) => (e.target.style.filter = 'brightness(1.1)')}
-                        onMouseOut={(e) => (e.target.style.filter = 'brightness(1)')}
-                    >
-                        {status === "sending" ? "Sending..." : "Send Message"}
-                    </button>
-                </div>
-
-                {status === "success" && (
-                    <div className="alert alert-success mt-3" role="alert">
-                        Response sent. You will receive a confirmation email shortly.
+            <div className={styles.content}>
+                {/* Benefits Section */}
+                <div className={styles.benefitsSection}>
+                    <h2>Sponsorship Benefits</h2>
+                    <div className={styles.benefitsGrid}>
+                        {[
+                            {
+                                icon: "👥",
+                                title: "Network with Talent",
+                                desc: "Connect with 500+ talented LGBTQ2+ professionals and students in STEM"
+                            },
+                            {
+                                icon: "📢",
+                                title: "Brand Visibility",
+                                desc: "Showcase your company's commitment to diversity and inclusion"
+                            },
+                            {
+                                icon: "🎤",
+                                title: "Speaking Opportunities",
+                                desc: "Present your company or research to an engaged audience"
+                            },
+                            {
+                                icon: "🤝",
+                                title: "Meaningful Impact",
+                                desc: "Support initiatives that celebrate and advance LGBTQ2+ voices in STEM"
+                            },
+                        ].map((benefit, idx) => (
+                            <div key={idx} className={styles.benefitCard}>
+                                <div className={styles.icon}>{benefit.icon}</div>
+                                <h3>{benefit.title}</h3>
+                                <p>{benefit.desc}</p>
+                            </div>
+                        ))}
                     </div>
-                )}
+                </div>
 
-                {status === "error" && (
-                    <div className="alert alert-danger mt-3" role="alert">
-                        Your response was not able to be submitted. Please try again later.
+                {/* Form Section */}
+                <div className={styles.formWrapper}>
+                    <div className={styles.formSection}>
+                        <h2>Tell Us About Your Organization</h2>
+                        <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="email" className={styles.label}>Email Address</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    required
+                                    value={form.email}
+                                    onChange={handleChange}
+                                    placeholder="your@company.com"
+                                    className={styles.input}
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label htmlFor="message" className={styles.label}>Message</label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    rows="6"
+                                    required
+                                    value={form.message}
+                                    onChange={handleChange}
+                                    placeholder="Tell us about your organization, sponsorship interests, and how you'd like to support Pride STEM..."
+                                    className={styles.textarea}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={status === "sending"}
+                                className={styles.submitBtn}
+                            >
+                                {status === "sending" ? "Sending..." : "Submit Inquiry"}
+                            </button>
+
+                            {status === "success" && (
+                                <div className={styles.successMessage}>
+                                    ✓ Thank you! We'll contact you soon to discuss sponsorship opportunities.
+                                </div>
+                            )}
+
+                            {status === "error" && (
+                                <div className={styles.errorMessage}>
+                                    ✗ Something went wrong. Please try again later.
+                                </div>
+                            )}
+                        </form>
                     </div>
-                )}
-            </form>
+                </div>
+            </div>
         </div>
     );
 }

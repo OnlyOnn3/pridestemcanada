@@ -1,105 +1,96 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import styles from "./home/home.module.css";
-import { SECTIONS } from "./home/constants";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import styles from "./page.module.css";
 
-// Home Components
-import HeroSection from "./home/components/HeroSection";
-import TextSection from "./home/components/TextSection";
-import FeatureSection from "./home/components/FeatureSection";
-import StatsSection from "./home/components/StatsSection";
-import ParallaxCTA from "./home/components/ParallaxCTA";
-
-// About Components
-import AboutHero from "./about/components/HeroSection";
-import AboutVision from "./about/components/VisionSection";
-import AboutMission from "./about/components/MissionSection";
-import AboutCTA from "./about/components/CTASection";
+const fadeInUp = {
+    initial: { y: 40, opacity: 0 },
+    whileInView: { y: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+};
 
 export default function HomePage() {
-    const { scrollY } = useScroll();
-    const opacity = useTransform(scrollY, [0, 800], [1, 0.95]);
-    const scale = useTransform(scrollY, [0, 800], [1, 0.98]);
-
     return (
-        <div>
-            <motion.div 
-                className={styles['home-container']}
-                style={{ opacity, scale }}
-            >
-                <div className={styles['section']}>
-                    <div className={styles['section-content']}>
-                        <HeroSection section={SECTIONS[0]} />
+        <div className={styles.homepage}>
+            {/* Hero Section */}
+            <motion.section className={styles.heroSection} {...fadeInUp}>
+                <div className={styles.heroContent}>
+                    <motion.h1 
+                        className={styles.heroTitle}
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                    >
+                        Celebrating <span className={styles.gradientText}>2SLGBTQ+</span> Voices in STEM
+                    </motion.h1>
+                    <motion.p 
+                        className={styles.heroSubtitle}
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        Join Canada's premier conference for LGBTQ2+ professionals and students in Science, Technology, Engineering, and Mathematics
+                    </motion.p>
+                    <motion.div 
+                        className={styles.heroCTA}
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                    >
+                        <Link href="/register" className={styles.ctaPrimary}>Register Now</Link>
+                        <Link href="/about" className={styles.ctaSecondary}>Learn More</Link>
+                    </motion.div>
+                </div>
+            </motion.section>
+
+            {/* Current Events Section */}
+            <motion.section className={styles.eventsSection} {...fadeInUp}>
+                <div className={styles.sectionContainer}>
+                    <h2 className={styles.sectionTitle}>Current Events</h2>
+                    <div className={styles.eventsGrid}>
+                        <motion.div 
+                            className={styles.eventCard}
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div className={styles.eventDate}>
+                                <span className={styles.eventMonth}>TBA</span>
+                                <span className={styles.eventDay}>2025</span>
+                            </div>
+                            <div className={styles.eventContent}>
+                                <h3>6th Annual Canadian 2SLGBTQ+ in STEM Conference</h3>
+                                <p className={styles.eventLocation}>📍 Toronto, Ontario</p>
+                                <p>Join us for our flagship annual conference celebrating diversity and excellence in STEM fields. Network with professionals, attend workshops, and hear from inspiring speakers.</p>
+                                <Link href="/register" className={styles.eventLink}>Learn More →</Link>
+                            </div>
+                        </motion.div>
+                        <motion.div 
+                            className={styles.eventCard}
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                        >
+                            <div className={styles.eventDate}>
+                                <span className={styles.eventMonth}>Ongoing</span>
+                                <span className={styles.eventDay}>2025</span>
+                            </div>
+                            <div className={styles.eventContent}>
+                                <h3>Call for Speakers & Volunteers</h3>
+                                <p className={styles.eventLocation}>📢 Nationwide</p>
+                                <p>We're looking for passionate individuals to share their stories and contribute to our mission. Applications are now open!</p>
+                                <Link href="/contact" className={styles.eventLink}>Get Involved →</Link>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
-
-                <div className={styles['section']}>
-                    <div className={styles['section-content']}>
-                        <FeatureSection />
-                    </div>
-                </div>
-
-                <div className={styles['section']}>
-                    <div className={styles['section-content']}>
-                        <TextSection section={SECTIONS[1]} />
-                    </div>
-                </div>
-
-                <div className={styles['section']}>
-                    <div className={styles['section-content']}>
-                        <StatsSection />
-                    </div>
-                </div>
-
-                <div className={styles['section']}>
-                    <div className={styles['section-content']}>
-                        <TextSection section={SECTIONS[2]} />
-                    </div>
-                </div>
-
-                {/* About Page Section */}
-                <motion.div
-                    className={styles['section']}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    <AboutHero 
-                        headerOpacity={useTransform(scrollY, [800, 1000], [0, 1])}
-                        headerY={useTransform(scrollY, [800, 1000], [50, 0])}
-                        scale={useTransform(scrollY, [800, 1000], [0.95, 1])}
-                    />
-                </motion.div>
-
-                <motion.div
-                    className={styles['section']}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    <AboutVision />
-                </motion.div>
-
-                <motion.div
-                    className={styles['section']}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    <AboutMission />
-                </motion.div>
-
-                <motion.div
-                    className={styles['section']}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    <AboutCTA />
-                </motion.div>
-
-                <ParallaxCTA />
-            </motion.div>
+            </motion.section>
         </div>
     );
 }

@@ -10,18 +10,47 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-        <body className="d-flex flex-column min-vh-100" style={{ paddingTop: '76px' }}>
+        <body style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            minHeight: '100vh',
+            paddingTop: '70px',
+            margin: 0,
+            padding: 0
+        }}>
         <header>
             <Nav />
         </header>
 
-        <main className="flex-grow-1 py-4">
-            <div className="container">{children}</div>
+        <main style={{ 
+            flex: 1, 
+            width: '100%',
+            paddingTop: '2rem',
+            paddingBottom: '2rem'
+        }}>
+            <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                paddingLeft: '1rem',
+                paddingRight: '1rem'
+            }}>
+                {children}
+            </div>
         </main>
 
-        <footer className="bg-light text-center text-muted py-3 mt-auto border-top">
-            <div className="container">
-                <p className="mb-0">© {new Date().getFullYear()} Pride STEM Canada</p>
+        <footer style={{
+            background: '#f9f9f9',
+            textAlign: 'center',
+            color: '#666',
+            padding: '2rem 1rem',
+            marginTop: 'auto',
+            borderTop: '1px solid #e0e0e0'
+        }}>
+            <div style={{
+                maxWidth: '1200px',
+                margin: '0 auto'
+            }}>
+                <p style={{ margin: 0 }}>© {new Date().getFullYear()} Pride STEM Canada. All rights reserved.</p>
             </div>
         </footer>
         </body>
