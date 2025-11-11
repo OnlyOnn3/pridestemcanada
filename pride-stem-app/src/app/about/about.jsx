@@ -14,9 +14,9 @@ const fadeInUp = {
 export default function AboutPage() {
     return (
         <div className={styles.aboutPage}>
-            {/* Hero Section */}
-            <motion.section className={styles.heroSection} {...fadeInUp}>
-                <div className={styles.heroContent}>
+            {/* Page Header - Simple, Clean */}
+            <motion.section className={styles.pageHeader} {...fadeInUp}>
+                <div className={styles.headerContent}>
                     <motion.div 
                         className={styles.badge}
                         initial={{ scale: 0.8, opacity: 0 }}
@@ -26,10 +26,10 @@ export default function AboutPage() {
                     >
                         About Pride STEM Canada
                     </motion.div>
-                    <h1 className={styles.heroTitle}>
+                    <h1 className={styles.pageTitle}>
                         Celebrating <span className={styles.gradientText}>2SLGBTQ+</span> Excellence in STEM
                     </h1>
-                    <p className={styles.heroSubtitle}>
+                    <p className={styles.pageSubtitle}>
                         Building an inclusive community where diverse voices drive innovation and shape the future of science, technology, engineering, and mathematics.
                     </p>
                 </div>
@@ -46,7 +46,6 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <div className={styles.mvIcon}>🎯</div>
                             <h2>Our Mission</h2>
                             <p>
                                 To create an inclusive space where 2SLGBTQ+ professionals and students in STEM 
@@ -68,7 +67,6 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <div className={styles.mvIcon}>🌈</div>
                             <h2>Our Vision</h2>
                             <p>
                                 A world where 2SLGBTQ+ individuals feel safer, valued, and celebrated in STEM 
@@ -149,34 +147,16 @@ export default function AboutPage() {
                     <div className={styles.activitiesGrid}>
                         {[
                             {
-                                icon: "🎤",
                                 title: "Annual Conference",
                                 description: "Our flagship event brings together 500+ attendees for inspiring talks, workshops, and networking opportunities."
                             },
                             {
-                                icon: "🤝",
                                 title: "Networking Events",
                                 description: "Regular meetups and social events to connect 2SLGBTQ+ professionals and students across STEM fields."
                             },
                             {
-                                icon: "👥",
                                 title: "Mentorship Programs",
                                 description: "Connecting experienced professionals with students and early-career individuals for guidance and support."
-                            },
-                            {
-                                icon: "📚",
-                                title: "Professional Development",
-                                description: "Workshops, webinars, and resources to help advance careers and build skills in STEM."
-                            },
-                            {
-                                icon: "🌍",
-                                title: "Community Building",
-                                description: "Creating safe, inclusive spaces both online and in-person for connection and collaboration."
-                            },
-                            {
-                                icon: "📣",
-                                title: "Advocacy & Awareness",
-                                description: "Promoting 2SLGBTQ+ visibility and advocating for equity and inclusion in STEM institutions."
                             }
                         ].map((activity, idx) => (
                             <motion.div
@@ -187,7 +167,6 @@ export default function AboutPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                             >
-                                <div className={styles.activityIcon}>{activity.icon}</div>
                                 <h3>{activity.title}</h3>
                                 <p>{activity.description}</p>
                             </motion.div>
@@ -217,60 +196,6 @@ export default function AboutPage() {
                             >
                                 <div className={styles.statNumber}>{stat.number}{stat.suffix}</div>
                                 <div className={styles.statLabel}>{stat.label}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* Values Section */}
-            <motion.section className={styles.valuesSection} {...fadeInUp}>
-                <div className={styles.sectionContainer}>
-                    <h2 className={styles.sectionTitle}>Our Core Values</h2>
-                    <div className={styles.valuesGrid}>
-                        {[
-                            {
-                                icon: "🌈",
-                                title: "Inclusivity",
-                                description: "We welcome all 2SLGBTQ+ identities and experiences, creating a space where everyone belongs."
-                            },
-                            {
-                                icon: "🤲",
-                                title: "Support",
-                                description: "We provide resources, mentorship, and community to help each other thrive in STEM."
-                            },
-                            {
-                                icon: "✨",
-                                title: "Excellence",
-                                description: "We celebrate outstanding achievements and contributions to STEM fields."
-                            },
-                            {
-                                icon: "🔗",
-                                title: "Connection",
-                                description: "We build meaningful relationships that last beyond conferences and events."
-                            },
-                            {
-                                icon: "🎓",
-                                title: "Education",
-                                description: "We promote learning, growth, and knowledge sharing across all career stages."
-                            },
-                            {
-                                icon: "⚡",
-                                title: "Innovation",
-                                description: "We foster creativity and new ideas through diverse perspectives."
-                            }
-                        ].map((value, idx) => (
-                            <motion.div
-                                key={idx}
-                                className={styles.valueCard}
-                                initial={{ y: 20, opacity: 0 }}
-                                whileInView={{ y: 0, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            >
-                                <div className={styles.valueIcon}>{value.icon}</div>
-                                <h3>{value.title}</h3>
-                                <p>{value.description}</p>
                             </motion.div>
                         ))}
                     </div>

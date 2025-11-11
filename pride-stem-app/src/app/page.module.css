@@ -10,13 +10,34 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 1rem;
-  background: var(--surface-rainbow-soft);
-  border-bottom: 1px solid var(--border-light);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9)),
+    url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1920&h=1080&fit=crop') center/cover;
+  border-bottom: 1px solid #e5e7eb;
+  position: relative;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), rgba(16, 185, 129, 0.03));
+  pointer-events: none;
 }
 
 .heroContent {
   max-width: 800px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .heroTitle {
@@ -24,7 +45,7 @@
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .gradientText {
@@ -36,7 +57,7 @@
 
 .heroSubtitle {
   font-size: 1.3rem;
-  color: var(--text-light);
+  color: #4a4a4a;
   margin-bottom: 2rem;
   line-height: 1.6;
   max-width: 700px;
@@ -64,25 +85,26 @@
 }
 
 .ctaPrimary {
-  background: var(--cta-gradient);
+  background: #2563eb;
   color: white;
-  box-shadow: 0 4px 12px var(--cta-shadow);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
 .ctaPrimary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(117, 8, 135, 0.4);
+  background: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
   color: white;
 }
 
 .ctaSecondary {
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: #2563eb;
+  border: 2px solid #2563eb;
 }
 
 .ctaSecondary:hover {
-  background: var(--primary);
+  background: #2563eb;
   color: white;
   transform: translateY(-2px);
 }
@@ -90,8 +112,8 @@
 /* Events Section */
 .eventsSection {
   padding: 4rem 1rem;
-  background: var(--background);
-  border-bottom: 1px solid var(--border-light);
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .eventsGrid {
@@ -108,15 +130,16 @@
   gap: 1.5rem;
   padding: 2rem;
   border-radius: 12px;
-  background: var(--surface-indigo-soft);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .eventCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(117, 8, 135, 0.15);
-  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  border-color: #3b82f6;
 }
 
 .eventDate {
@@ -124,7 +147,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--cta-gradient);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
   padding: 1rem;
   border-radius: 8px;
@@ -152,27 +175,27 @@
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--foreground);
+  color: #1a1a1a;
   line-height: 1.4;
 }
 
 .eventLocation {
   font-size: 0.95rem;
-  color: var(--primary);
+  color: #2563eb;
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
 .eventContent p {
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
 .eventLink {
   display: inline-block;
-  color: var(--primary);
+  color: #2563eb;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -197,13 +220,13 @@
 /* Stats Section */
 .statsSection {
   padding: 4rem 1rem;
-  background: var(--background);
-  border-bottom: 1px solid var(--border-light);
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .sectionContainer {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 .sectionTitle {
@@ -211,7 +234,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .statsGrid {
@@ -224,9 +247,10 @@
   text-align: center;
   padding: 2rem;
   border-radius: 12px;
-  background: var(--surface-indigo-soft);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .statCard:hover {
@@ -246,15 +270,15 @@
 
 .statLabel {
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   font-weight: 500;
 }
 
 /* Mission Section */
 .missionSection {
   padding: 4rem 1rem;
-  background: var(--surface-rainbow-soft);
-  border-bottom: 1px solid var(--border-light);
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .missionGrid {
@@ -267,29 +291,29 @@
 
 .missionCard {
   padding: 2.5rem;
-  background: var(--background);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
 .missionCard:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary);
+  border-color: #3b82f6;
 }
 
 .missionCard h3 {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .missionCard p {
   font-size: 1.1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   line-height: 1.8;
   margin: 0;
 }
@@ -297,8 +321,8 @@
 /* CTA Section */
 .ctaSection {
   padding: 4rem 1rem;
-  background: var(--background);
-  border-bottom: 1px solid var(--border-light);
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .ctaGrid {
@@ -313,33 +337,34 @@
 .ctaCard {
   padding: 2rem;
   border-radius: 12px;
-  background: var(--surface-rainbow-soft);
+  background: rgba(255, 255, 255, 0.95);
   border: 2px solid transparent;
   transition: all 0.3s ease;
   text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .ctaCard:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(117, 8, 135, 0.2);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
 }
 
 .ctaCard h4 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .ctaCard p {
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin-bottom: 1.5rem;
 }
 
 .cardLink {
   display: inline-block;
-  color: var(--primary);
+  color: #2563eb;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -618,7 +643,7 @@ a.secondary {
   font-size: 2.5rem;
   font-weight: bold;
   margin: 0;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .stepIndicator{
@@ -660,7 +685,7 @@ a.secondary {
 .aboutSubtitle {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: var(--foreground);
+  color: #1a1a1a;
   font-weight: 600;
 }
 
@@ -669,7 +694,7 @@ a.secondary {
   line-height: 1.6;
   margin-bottom: 30px;
   opacity: 0.9;
-  color: var(--foreground);
+  color: #4a4a4a;
 }
 
 .features {
@@ -689,7 +714,7 @@ a.secondary {
 .featureItem h3 {
   margin: 0 0 12px 0;
   font-size: 1.2rem;
-  color: var(--foreground);
+  color: #1a1a1a;
   font-weight: 600;
 }
 
@@ -698,7 +723,7 @@ a.secondary {
   font-size: 0.95rem;
   opacity: 0.8;
   line-height: 1.5;
-  color: var(--foreground);
+  color: #4a4a4a;
 }
 
 .actionSection {
@@ -734,12 +759,12 @@ a.secondary {
 .brandInitials {
   font-weight: bold;
   font-size: 1.1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .brandName {
   font-size: 0.9rem;
-  color: var(--foreground);
+  color: #4a4a4a;
 }
 
 /* Dark mode support */

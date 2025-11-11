@@ -27,7 +27,7 @@ export default function GovernancePage() {
                         Non-Profit Excellence
                     </motion.div>
                     <h1 className={styles.heroTitle}>
-                        Governance & <span className={styles.gradientText}>Organization</span>
+                        Governance & Organization
                     </h1>
                     <p className={styles.heroSubtitle}>
                         Pride STEM Canada operates as a transparent, accountable non-profit organization 
@@ -42,10 +42,10 @@ export default function GovernancePage() {
                     <h2 className={styles.sectionTitle}>Our Core Values</h2>
                     <div className={styles.valuesGrid}>
                         {[
-                            { icon: "⚖️", title: "Integrity", desc: "Operating with honesty and ethical standards in all our activities" },
-                            { icon: "🔍", title: "Transparency", desc: "Open communication and accountability to our community" },
-                            { icon: "🌈", title: "Inclusivity", desc: "Welcoming all 2SLGBTQ+ voices and experiences in STEM" },
-                            { icon: "✨", title: "Excellence", desc: "Commitment to quality and best practices in everything we do" },
+                            { title: "Integrity", desc: "Operating with honesty and ethical standards in all our activities" },
+                            { title: "Transparency", desc: "Open communication and accountability to our community" },
+                            { title: "Inclusivity", desc: "Welcoming all 2SLGBTQ+ voices and experiences in STEM" },
+                            { title: "Excellence", desc: "Commitment to quality and best practices in everything we do" },
                         ].map((value, idx) => (
                             <motion.div 
                                 key={idx}
@@ -55,7 +55,6 @@ export default function GovernancePage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                             >
-                                <div className={styles.valueIcon}>{value.icon}</div>
                                 <h3>{value.title}</h3>
                                 <p>{value.desc}</p>
                             </motion.div>
@@ -71,7 +70,6 @@ export default function GovernancePage() {
                         {/* Non-Profit Organization */}
                         <motion.div className={styles.contentCard} {...fadeInUp}>
                             <div className={styles.cardHeader}>
-                                <div className={styles.cardIcon}>📋</div>
                                 <h2>Non-Profit Organization</h2>
                             </div>
                             <div className={styles.cardContent}>
@@ -101,7 +99,6 @@ export default function GovernancePage() {
                         {/* Bylaws */}
                         <motion.div className={styles.contentCard} {...fadeInUp}>
                             <div className={styles.cardHeader}>
-                                <div className={styles.cardIcon}>📜</div>
                                 <h2>Bylaws & Governance</h2>
                             </div>
                             <div className={styles.cardContent}>
@@ -140,7 +137,6 @@ export default function GovernancePage() {
                         {/* CIANP */}
                         <motion.div className={styles.contentCard} {...fadeInUp}>
                             <div className={styles.cardHeader}>
-                                <div className={styles.cardIcon}>🤝</div>
                                 <h2>CIANP Membership</h2>
                             </div>
                             <div className={styles.cardContent}>
@@ -153,27 +149,21 @@ export default function GovernancePage() {
                                 <h4>CIANP Support Includes</h4>
                                 <div className={styles.benefitsGrid}>
                                     <div className={styles.benefit}>
-                                        <span className={styles.benefitIcon}>📚</span>
                                         <span>Professional development & training</span>
                                     </div>
                                     <div className={styles.benefit}>
-                                        <span className={styles.benefitIcon}>⚙️</span>
                                         <span>Governance best practices</span>
                                     </div>
                                     <div className={styles.benefit}>
-                                        <span className={styles.benefitIcon}>🔗</span>
                                         <span>Networking opportunities</span>
                                     </div>
                                     <div className={styles.benefit}>
-                                        <span className={styles.benefitIcon}>📣</span>
                                         <span>Sector advocacy</span>
                                     </div>
                                     <div className={styles.benefit}>
-                                        <span className={styles.benefitIcon}>🏆</span>
                                         <span>Standards & certification</span>
                                     </div>
                                     <div className={styles.benefit}>
-                                        <span className={styles.benefitIcon}>🎯</span>
                                         <span>Expert resources</span>
                                     </div>
                                 </div>
@@ -183,7 +173,6 @@ export default function GovernancePage() {
                         {/* Transparency */}
                         <motion.div className={styles.contentCard} {...fadeInUp}>
                             <div className={styles.cardHeader}>
-                                <div className={styles.cardIcon}>🔍</div>
                                 <h2>Transparency & Accountability</h2>
                             </div>
                             <div className={styles.cardContent}>

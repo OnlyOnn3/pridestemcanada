@@ -6,17 +6,14 @@ const features = [
     {
         title: "Connect",
         description: "Network with other 2SLGBTQ+ professionals and allies in STEM fields",
-        icon: "🤝",
     },
     {
         title: "Learn",
         description: "Access workshops, talks, and resources from industry leaders",
-        icon: "📚",
     },
     {
         title: "Grow",
         description: "Develop your skills and advance your career in STEM",
-        icon: "🌱",
     },
 ];
 
@@ -51,17 +48,6 @@ export default function FeatureSection() {
                             }}
                         >
                             <div className="card-body text-center p-4">
-                                <motion.div
-                                    className="display-4 mb-3"
-                                    initial={{ scale: 0.5 }}
-                                    whileInView={{ scale: 1 }}
-                                    transition={{ 
-                                        duration: 0.35,
-                                        delay: index * 0.15 + 0.2
-                                    }}
-                                >
-                                    {feature.icon}
-                                </motion.div>
                                 <h3 className="h4 mb-3">{feature.title}</h3>
                                 <p className="text-muted mb-0">{feature.description}</p>
                             </div>

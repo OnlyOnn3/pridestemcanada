@@ -1,37 +1,78 @@
+/**
+ * NAVIGATION BAR STYLES (Nav.module.css)
+ * 
+ * Styles for the main navigation component that appears on all pages.
+ * 
+ * Features:
+ * - Fixed position at top of page
+ * - Glassmorphism effect (semi-transparent with blur)
+ * - Pride rainbow border at bottom
+ * - Responsive hamburger menu for mobile
+ * - Active page highlighting
+ * - Smooth hover animations
+ * 
+ * Responsive Breakpoints:
+ * - Desktop: Full horizontal menu (>768px)
+ * - Mobile: Hamburger menu with dropdown (≤768px)
+ */
+
+/* ========================================
+   MAIN NAVBAR CONTAINER
+   ======================================== */
 .navbar {
-  position: fixed;
+  position: fixed;                          /* Stays at top when scrolling */
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;                      /* Solid white background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(12px);
-  z-index: 1000;
+  z-index: 1000;                            /* Above other content */
   padding: 0.75rem 0;
-  border-bottom: 3px solid;
-  border-image: var(--nav-border-gradient) 1;
+  border-bottom: 5px solid transparent;     /* Space for pride stripe */
+  background-image: 
+    linear-gradient(#ffffff, #ffffff),
+    linear-gradient(90deg,
+      var(--pride-red) 0%, var(--pride-red) 10%,
+      var(--pride-orange) 10%, var(--pride-orange) 20%,
+      var(--pride-yellow) 20%, var(--pride-yellow) 30%,
+      var(--pride-green) 30%, var(--pride-green) 40%,
+      var(--pride-blue) 40%, var(--pride-blue) 50%,
+      var(--pride-purple) 50%, var(--pride-purple) 60%,
+      var(--pride-light-blue) 60%, var(--pride-light-blue) 70%,
+      var(--pride-pink) 70%, var(--pride-pink) 80%,
+      var(--pride-brown) 80%, var(--pride-brown) 90%,
+      var(--pride-black) 90%, var(--pride-black) 100%
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
+/* Navigation content wrapper - centers and limits width */
 .navContainer {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
 }
 
+/* ========================================
+   LOGO/BRAND SECTION
+   ======================================== */
+
+/* Logo and brand name container */
 .navBrand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: #1a1a1a;
   transition: transform 0.3s ease;
 }
 
+/* Slight zoom on hover */
 .navBrand:hover {
   transform: scale(1.05);
 }
@@ -40,8 +81,9 @@
   display: block;
 }
 
+/* "Pride STEM" text with rainbow gradient */
 .brandText {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   letter-spacing: -0.5px;
   background: var(--nav-border-gradient);
   -webkit-background-clip: text;
@@ -49,7 +91,11 @@
   background-clip: text;
 }
 
-/* Navigation Menu */
+/* ========================================
+   NAVIGATION MENU (Desktop)
+   ======================================== */
+
+/* Horizontal menu list */
 .navMenu {
   display: flex;
   list-style: none;
@@ -60,14 +106,15 @@
 }
 
 .navItem {
-  position: relative;
+  position: relative;                       /* For underline pseudo-element */
 }
 
+/* Individual menu link */
 .navLink {
   display: inline-block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  color: #2a2a2a;
+  color: #1a1a1a;                          /* Professional black text */
   font-weight: 500;
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -75,6 +122,7 @@
   cursor: pointer;
 }
 
+/* Animated underline effect using ::after pseudo-element */
 .navLink::after {
   content: "";
   position: absolute;
@@ -82,56 +130,77 @@
   left: 1rem;
   right: 1rem;
   height: 2px;
-  background: var(--nav-border-gradient);
-  transform: scaleX(0);
+  background: linear-gradient(90deg,
+    var(--pride-red) 0%,
+    var(--pride-orange) 12.5%,
+    var(--pride-yellow) 25%,
+    var(--pride-green) 37.5%,
+    var(--pride-blue) 50%,
+    var(--pride-purple) 62.5%,
+    var(--pride-light-blue) 75%,
+    var(--pride-pink) 87.5%,
+    var(--pride-brown) 93.75%,
+    var(--pride-black) 100%);
+  transform: scaleX(0);                     /* Hidden by default */
   transform-origin: right;
   transition: transform 0.3s ease;
 }
 
+/* Show underline on hover or when link is active */
 .navLink:hover::after,
 .navLink.active::after {
-  transform: scaleX(1);
+  transform: scaleX(1);                     /* Expand from left */
   transform-origin: left;
 }
 
+/* Active page styling */
 .navLink.active {
   color: var(--secondary);
   font-weight: 600;
 }
 
+/* Hover color change */
 .navLink:hover {
-  color: var(--primary);
+  color: #2563eb;
 }
 
+/* Keyboard focus styling for accessibility */
 .navLink:focus-visible {
-  color: var(--primary);
+  color: #2563eb;
   outline: none;
-  box-shadow: inset 0 -3px 0 rgba(117, 8, 135, 0.35);
+  box-shadow: inset 0 -3px 0 rgba(59, 130, 246, 0.35);
 }
 
-/* CTA Button - Donate */
+/* === CTA BUTTON (Optional Donate Button) === */
 .ctaButton {
-  background: var(--cta-gradient);
+  background: #2563eb;
   color: white !important;
-  border-radius: 999px;
+  border-radius: 999px;                     /* Fully rounded */
   padding: 0.6rem 1.4rem !important;
   margin-left: 0.5rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px var(--cta-shadow);
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.25);
 }
 
+/* Remove underline effect from CTA button */
 .ctaButton::after {
   display: none;
 }
 
+/* CTA button hover - lifts up */
 .ctaButton:hover {
   color: white !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(117, 8, 135, 0.38);
+  background: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
 
-/* Mobile Toggle Button */
+/* ========================================
+   MOBILE HAMBURGER MENU
+   ======================================== */
+
+/* Hamburger button (hidden on desktop) */
 .mobileToggle {
   display: none;
   flex-direction: column;
@@ -141,73 +210,84 @@
   padding: 0.5rem;
 }
 
+/* Hamburger icon - middle line */
 .hamburger {
   display: block;
   width: 25px;
   height: 3px;
-  background: #2a2a2a;
+  background: #1a1a1a;                     /* Professional black */
   border-radius: 3px;
   transition: all 0.3s ease;
   position: relative;
 }
 
+/* Hamburger icon - top and bottom lines using pseudo-elements */
 .hamburger::before,
 .hamburger::after {
   content: "";
   position: absolute;
   width: 25px;
   height: 3px;
-  background: #2a2a2a;
+  background: #1a1a1a;                     /* Professional black */
   border-radius: 3px;
   left: 0;
   transition: all 0.3s ease;
 }
 
 .hamburger::before {
-  top: -8px;
+  top: -8px;                                /* Top line */
 }
 
 .hamburger::after {
-  top: 8px;
+  top: 8px;                                 /* Bottom line */
 }
 
+/* Hamburger animation when menu is open - transforms to X */
 .hamburger.active {
-  background: transparent;
+  background: transparent;                  /* Hide middle line */
 }
 
 .hamburger.active::before {
-  transform: rotate(45deg) translateY(11px);
+  transform: rotate(45deg) translateY(11px);  /* Top line rotates */
 }
 
 .hamburger.active::after {
-  transform: rotate(-45deg) translateY(-11px);
+  transform: rotate(-45deg) translateY(-11px); /* Bottom line rotates */
 }
 
-/* Mobile Responsiveness */
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* TABLETS AND MOBILE DEVICES (≤768px) */
 @media (max-width: 768px) {
+  /* Show hamburger button on mobile */
   .mobileToggle {
     display: flex;
   }
 
+  /* Transform menu to vertical dropdown */
   .navMenu {
     position: absolute;
-    top: 100%;
+    top: 100%;                              /* Below navbar */
     left: 0;
     right: 0;
     background: #ffffff;
-    flex-direction: column;
+    flex-direction: column;                 /* Stack vertically */
     gap: 0;
     align-items: stretch;
-    max-height: 0;
-    overflow: hidden;
+    max-height: 0;                          /* Hidden by default */
+    overflow: hidden;                       /* Hide content when closed */
     transition: max-height 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
+  /* Expand menu when hamburger is clicked */
   .navMenu.active {
-    max-height: 400px;
+    max-height: 400px;                      /* Show menu */
   }
 
+  /* Full width mobile menu links */
   .navLink {
     padding: 1rem 1.5rem;
     display: block;
@@ -215,37 +295,44 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
+  /* Remove desktop underline effect on mobile */
   .navLink::after {
     display: none;
   }
 
+  /* Active page gets rainbow background on mobile */
   .navLink.active {
     background: linear-gradient(90deg, rgba(228, 3, 3, 0.08), rgba(85, 205, 252, 0.08));
-    border-left: 4px solid;
+    border-left: 4px solid;                 /* Left border indicator */
     border-image: linear-gradient(180deg, var(--pride-red), var(--pride-purple)) 1;
   }
 
+  /* CTA button full width on mobile */
   .ctaButton {
-    margin: 0.5rem 1.5rem;
-    width: calc(100% - 3rem);
+    margin: 0.5rem 1.5rem;                  /* Side margins */
+    width: calc(100% - 3rem);               /* Full width minus margins */
     text-align: center;
   }
 
+  /* Hide "Pride STEM" text on mobile - only show logo */
   .brandText {
     display: none;
   }
 }
 
+/* SMALL MOBILE DEVICES (≤480px) */
 @media (max-width: 480px) {
   .navBrand {
     gap: 0.5rem;
   }
 
+  /* Smaller logo on very small screens */
   .logo {
     width: 40px;
     height: 36px;
   }
 
+  /* Slightly smaller menu links */
   .navLink {
     padding: 0.75rem 1rem;
     font-size: 0.9rem;

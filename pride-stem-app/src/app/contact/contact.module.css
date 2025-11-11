@@ -1,7 +1,6 @@
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
+  width: 100%;
+  padding: 3rem 2rem;
 }
 
 .header {
@@ -13,12 +12,12 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .header p {
   font-size: 1.1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -33,12 +32,10 @@
 /* Form Section */
 .formSection {
   padding: 2rem;
-  background: var(--background);
+  background: #ffffff;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-top: 4px solid;
-  border-image: var(--nav-border-gradient) 1;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .form {
@@ -55,19 +52,19 @@
 
 .label {
   font-weight: 600;
-  color: var(--foreground);
+  color: #1a1a1a;
   font-size: 0.95rem;
 }
 
 .input,
 .textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  color: var(--foreground);
-  background: var(--background);
+  color: #1a1a1a;
+  background: #ffffff;
   transition: all 0.3s ease;
 }
 
@@ -133,33 +130,33 @@
 
 .infoCard {
   padding: 1.5rem;
-  background: var(--surface-rainbow-soft);
+  background: #f9fafb;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
 }
 
 .infoCard h3 {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .infoCard p {
   margin-bottom: 0.5rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   font-size: 0.95rem;
 }
 
 .infoCard a {
-  color: var(--primary);
+  color: #2563eb;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .infoCard a:hover {
-  color: var(--secondary);
+  color: #10b981;
 }
 
 .socialLinks {

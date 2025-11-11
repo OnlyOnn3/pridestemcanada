@@ -1,7 +1,6 @@
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 1rem;
+  width: 100%;
+  padding: 3rem 2rem;
 }
 
 .header {
@@ -13,12 +12,12 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .header p {
   font-size: 1.1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -38,7 +37,7 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: var(--foreground);
+  color: #1a1a1a;
   text-align: center;
 }
 
@@ -50,17 +49,18 @@
 
 .benefitCard {
   padding: 2rem;
-  background: var(--surface-indigo-soft);
+  background: #ffffff;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
   text-align: center;
   transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .benefitCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
-  border-color: var(--pride-purple);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
 }
 
 .icon {
@@ -73,12 +73,12 @@
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .benefitCard p {
   font-size: 0.95rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin: 0;
   line-height: 1.5;
 }
@@ -94,19 +94,17 @@
   width: 100%;
   max-width: 700px;
   padding: 2.5rem;
-  background: var(--background);
+  background: #ffffff;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-top: 4px solid;
-  border-image: var(--nav-border-gradient) 1;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .formSection h2 {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .form {
@@ -123,19 +121,19 @@
 
 .label {
   font-weight: 600;
-  color: var(--foreground);
+  color: #1a1a1a;
   font-size: 0.95rem;
 }
 
 .input,
 .textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  color: var(--foreground);
-  background: var(--background);
+  color: #1a1a1a;
+  background: #ffffff;
   transition: all 0.3s ease;
 }
 

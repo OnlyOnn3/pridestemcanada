@@ -13,7 +13,9 @@
   align-items: center;
   justify-content: center;
   padding: 6rem 1rem 4rem;
-  background: linear-gradient(135deg, rgba(228, 3, 3, 0.08), rgba(255, 140, 0, 0.08), rgba(255, 237, 0, 0.08), rgba(0, 128, 38, 0.08), rgba(0, 77, 255, 0.08), rgba(117, 7, 135, 0.08));
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.92)),
+    url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&h=1080&fit=crop') center/cover;
   position: relative;
   overflow: hidden;
 }
@@ -26,9 +28,8 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 30% 40%, rgba(117, 7, 135, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(0, 128, 38, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(0, 77, 255, 0.12) 0%, transparent 50%);
+    radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
   pointer-events: none;
   animation: float 20s ease-in-out infinite;
 }
@@ -43,18 +44,23 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .badge {
   display: inline-block;
   padding: 0.6rem 1.5rem;
-  background: linear-gradient(135deg, rgba(117, 7, 135, 0.2), rgba(0, 128, 38, 0.2));
+  background: rgba(59, 130, 246, 0.08);
   border-radius: 999px;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--primary);
+  color: #1e40af;
   margin-bottom: 1.5rem;
-  border: 2px solid rgba(117, 7, 135, 0.3);
+  border: 2px solid rgba(59, 130, 246, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -64,7 +70,7 @@
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .gradient {
@@ -77,7 +83,7 @@
 
 .heroSubtitle {
   font-size: 1.3rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   line-height: 1.8;
   margin-bottom: 2.5rem;
   max-width: 750px;
@@ -99,11 +105,11 @@
   gap: 0.5rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--foreground);
+  color: #1a1a1a;
   padding: 0.75rem 1.5rem;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 999px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
 }
 
 .icon {
@@ -112,7 +118,7 @@
 
 .ctaButton {
   padding: 1.25rem 3rem;
-  background: var(--cta-gradient);
+  background: #2563eb;
   color: white;
   border: none;
   border-radius: 999px;
@@ -120,24 +126,25 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(117, 8, 135, 0.3);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
   font-family: inherit;
 }
 
 .ctaButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(117, 8, 135, 0.4);
+  background: #1d4ed8;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
 }
 
 /* Why Attend Section */
 .whyAttendSection {
   padding: 5rem 1rem;
-  background: var(--background);
+  background: #ffffff;
 }
 
 .sectionContainer {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 .sectionTitle {
@@ -145,7 +152,7 @@
   font-weight: 800;
   text-align: center;
   margin-bottom: 3.5rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .benefitsGrid {
@@ -156,13 +163,14 @@
 
 .benefitCard {
   padding: 2.5rem;
-  background: var(--background);
-  border-radius: 20px;
-  border: 2px solid var(--border-light);
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
   text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .benefitCard::before {
@@ -171,10 +179,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
   transform: scaleX(0);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .benefitCard:hover::before {
@@ -182,9 +190,9 @@
 }
 
 .benefitCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(117, 7, 135, 0.15);
-  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
 }
 
 .benefitIcon {
@@ -202,12 +210,12 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .benefitCard p {
   font-size: 1.05rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   line-height: 1.7;
   margin: 0;
 }
@@ -215,7 +223,7 @@
 /* Highlights Section */
 .highlightsSection {
   padding: 5rem 1rem;
-  background: var(--surface-rainbow-soft);
+  background: #f9fafb;
 }
 
 .highlightsGrid {
@@ -228,25 +236,23 @@
 
 .highlightCard {
   padding: 3rem 2.5rem;
-  background: var(--background);
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
 }
 
 .highlightCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 .highlightNumber {
   font-size: 3.5rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #750787, #008026);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #2563eb;
   margin-bottom: 1rem;
 }
 
@@ -254,12 +260,12 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .highlightCard p {
   font-size: 1.05rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   line-height: 1.6;
   margin: 0;
 }
@@ -267,7 +273,7 @@
 /* Pricing Section */
 .pricingSection {
   padding: 5rem 1rem;
-  background: var(--background);
+  background: #ffffff;
 }
 
 .pricingGrid {
@@ -280,26 +286,27 @@
 
 .pricingCard {
   padding: 3rem 2.5rem;
-  background: var(--background);
-  border-radius: 20px;
-  border: 2px solid var(--border-light);
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
   text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .pricingCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
 }
 
 .pricingCard.featured {
-  border-color: var(--primary);
-  border-width: 3px;
-  box-shadow: 0 15px 40px rgba(117, 7, 135, 0.15);
+  border-color: #3b82f6;
+  border-width: 2px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
 .popularBadge {
@@ -307,7 +314,7 @@
   top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--cta-gradient);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 999px;
@@ -321,16 +328,13 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .tierPrice {
   font-size: 3.5rem;
   font-weight: 900;
-  background: linear-gradient(135deg, #750787, #008026);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #2563eb;
   margin-bottom: 0.5rem;
 }
 
@@ -342,10 +346,10 @@
 
 .tierDescription {
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 2px solid var(--border-light);
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .tierFeatures {
@@ -362,11 +366,11 @@
   align-items: flex-start;
   gap: 0.75rem;
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
 }
 
 .checkmark {
-  color: var(--primary);
+  color: #10b981;
   font-weight: 700;
   font-size: 1.2rem;
   flex-shrink: 0;
@@ -374,7 +378,7 @@
 
 .tierButton {
   padding: 1rem 2rem;
-  background: var(--cta-gradient);
+  background: #2563eb;
   color: white;
   border: none;
   border-radius: 999px;
@@ -383,18 +387,19 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: inherit;
-  box-shadow: 0 4px 14px rgba(117, 8, 135, 0.25);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .tierButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(117, 8, 135, 0.35);
+  background: #1d4ed8;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
 }
 
 /* Registration Section */
 .registrationSection {
   padding: 5rem 1rem;
-  background: var(--surface-indigo-soft);
+  background: #f9fafb;
 }
 
 .registrationContainer {
@@ -408,8 +413,8 @@
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
   background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  color: #2563eb;
+  border: 2px solid #2563eb;
   border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
@@ -420,14 +425,14 @@
 }
 
 .backButton:hover {
-  background: var(--primary);
+  background: #2563eb;
   color: white;
 }
 
 /* FAQ Section */
 .faqSection {
   padding: 5rem 1rem;
-  background: var(--background);
+  background: #ffffff;
 }
 
 .faqGrid {
@@ -440,28 +445,29 @@
 
 .faqCard {
   padding: 2.5rem;
-  background: var(--surface-indigo-soft);
-  border-radius: 16px;
-  border: 1px solid var(--border-light);
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .faqCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
 }
 
 .faqCard h3 {
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .faqCard p {
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   line-height: 1.7;
   margin: 0;
 }
@@ -469,8 +475,9 @@
 /* Final CTA Section */
 .finalCTA {
   padding: 6rem 1rem;
-  background: linear-gradient(135deg, rgba(117, 7, 135, 0.1), rgba(0, 128, 38, 0.1));
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
   text-align: center;
+  border-top: 1px solid #e5e7eb;
 }
 
 .ctaContent {
@@ -482,18 +489,18 @@
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .ctaContent p {
   font-size: 1.25rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin-bottom: 2.5rem;
 }
 
 .ctaButtonLarge {
   padding: 1.5rem 4rem;
-  background: var(--cta-gradient);
+  background: #2563eb;
   color: white;
   border: none;
   border-radius: 999px;
@@ -501,24 +508,25 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 24px rgba(117, 8, 135, 0.3);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
   font-family: inherit;
   margin-bottom: 1.5rem;
 }
 
 .ctaButtonLarge:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(117, 8, 135, 0.4);
+  background: #1d4ed8;
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.35);
 }
 
 .ctaNote {
   font-size: 1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin: 0;
 }
 
 .ctaNote a {
-  color: var(--primary);
+  color: #2563eb;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -544,23 +552,21 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: #1a1a1a;
 }
 
 .header p {
   font-size: 1.1rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin: 0;
 }
 
 .form {
-  background: var(--background);
+  background: #ffffff;
   border-radius: 12px;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
   padding: 2.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-top: 4px solid;
-  border-image: var(--nav-border-gradient) 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .formGrid {
@@ -585,7 +591,7 @@
 
 .label {
   font-weight: 600;
-  color: var(--foreground);
+  color: #1a1a1a;
   font-size: 0.95rem;
   display: flex;
   align-items: center;
@@ -593,7 +599,7 @@
 }
 
 .required {
-  color: var(--primary);
+  color: #dc2626;
   font-weight: 700;
 }
 
@@ -601,12 +607,12 @@
 .select,
 .textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--border-light);
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
-  color: var(--foreground);
-  background: var(--background);
+  color: #1a1a1a;
+  background: #ffffff;
   transition: all 0.3s ease;
 }
 
@@ -634,7 +640,7 @@
 
 .helperText {
   font-size: 0.85rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   font-weight: 400;
 }
 
@@ -679,10 +685,10 @@
 .disclaimer {
   text-align: center;
   font-size: 0.85rem;
-  color: var(--text-light);
+  color: #6b6b6b;
   margin: 0;
   padding-top: 0.5rem;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid #e5e7eb;
 }
 
 /* Responsive Design */

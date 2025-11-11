@@ -1,3 +1,27 @@
+/**
+ * Vendors/Sponsors Page Component
+ * 
+ * This page is for organizations interested in becoming conference sponsors.
+ * 
+ * Features:
+ * - Overview of sponsorship benefits
+ * - Inquiry form for potential sponsors
+ * - Form submission to /api/vendor endpoint
+ * - Success/error status messages
+ * 
+ * Form Flow:
+ * 1. Organization representative fills out email and inquiry message
+ * 2. Form submits via POST to /api/vendor
+ * 3. API sends two emails (one to team, one confirmation to sponsor)
+ * 4. Success or error message displayed
+ * 
+ * Benefits Grid displays:
+ * - Network with Talent
+ * - Brand Visibility
+ * - Speaking Opportunities
+ * - Meaningful Impact
+ */
+
 "use client";
 
 import { useState } from "react";
@@ -5,18 +29,40 @@ import Link from "next/link";
 import styles from "./vendors.module.css";
 
 export default function VendorPage() {
+    /**
+     * Form state - stores email and message values
+     */
     const [form, setForm] = useState({ email: "", message: "" });
+    
+    /**
+     * Status state - tracks form submission state
+     * Values: "" (initial) | "sending" (in progress) | "success" | "error"
+     */
     const [status, setStatus] = useState("");
 
+    /**
+     * Handle input field changes
+     * Updates the form state as user types
+     * 
+     * @param {Event} e - The input change event
+     */
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    /**
+     * Handle form submission
+     * Sends vendor inquiry to API endpoint
+     * 
+     * @param {Event} e - The form submit event
+     */
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus("sending");
+        e.preventDefault(); // Prevent default form submission
+        setStatus("sending"); // Show loading state
 
         try {
+            // === SEND TO VENDOR API ENDPOINT ===
+            // POST request to vendor API with sponsor's email and inquiry
             const res = await fetch("/api/vendor", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -25,14 +71,18 @@ export default function VendorPage() {
 
             const data = await res.json();
 
+            // === HANDLE RESPONSE ===
             if (res.ok) {
+                // Success - emails sent to both team and sponsor
                 setStatus("success");
-                setForm({ email: "", message: "" });
+                setForm({ email: "", message: "" }); // Clear form
             } else {
+                // Error from API
                 setStatus("error");
                 console.error(data.error);
             }
         } catch (err) {
+            // Network or unexpected error
             setStatus("error");
             console.error(err);
         }
@@ -53,28 +103,23 @@ export default function VendorPage() {
                     <div className={styles.benefitsGrid}>
                         {[
                             {
-                                icon: "👥",
                                 title: "Network with Talent",
                                 desc: "Connect with 500+ talented LGBTQ2+ professionals and students in STEM"
                             },
                             {
-                                icon: "📢",
                                 title: "Brand Visibility",
                                 desc: "Showcase your company's commitment to diversity and inclusion"
                             },
                             {
-                                icon: "🎤",
                                 title: "Speaking Opportunities",
                                 desc: "Present your company or research to an engaged audience"
                             },
                             {
-                                icon: "🤝",
                                 title: "Meaningful Impact",
                                 desc: "Support initiatives that celebrate and advance LGBTQ2+ voices in STEM"
                             },
                         ].map((benefit, idx) => (
                             <div key={idx} className={styles.benefitCard}>
-                                <div className={styles.icon}>{benefit.icon}</div>
                                 <h3>{benefit.title}</h3>
                                 <p>{benefit.desc}</p>
                             </div>
@@ -125,13 +170,13 @@ export default function VendorPage() {
 
                             {status === "success" && (
                                 <div className={styles.successMessage}>
-                                    ✓ Thank you! We'll contact you soon to discuss sponsorship opportunities.
+                                    Thank you! We'll contact you soon to discuss sponsorship opportunities.
                                 </div>
                             )}
 
                             {status === "error" && (
                                 <div className={styles.errorMessage}>
-                                    ✗ Something went wrong. Please try again later.
+                                    Something went wrong. Please try again later.
                                 </div>
                             )}
                         </form>
