@@ -1,37 +1,68 @@
-.container {
+.contactPage {
   width: 100%;
-  padding: 3rem 2rem;
+  min-height: 100vh;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 4rem;
+/* 🔹 Hero Section - Matches Conference Page */
+.heroSection {
+  padding: 8rem 1rem 4rem;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.header p {
-  font-size: 1.1rem;
-  color: #6b6b6b;
-  max-width: 600px;
+.heroContent {
+  max-width: 900px;
   margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  align-items: start;
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  letter-spacing: -0.02em;
 }
 
-/* Form Section */
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* 🔹 Form Section */
+.formSectionWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+  background: #ffffff;
+}
+
 .formSection {
-  padding: 2rem;
+  width: 100%;
+  max-width: 700px;
+  padding: 2.5rem;
   background: #ffffff;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
@@ -71,18 +102,19 @@
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: var(--pride-blue);
-  box-shadow: 0 0 0 3px rgba(0, 77, 255, 0.15);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .textarea {
   resize: vertical;
-  min-height: 140px;
+  min-height: 150px;
 }
 
+/* 🔹 Button + Messages */
 .submitBtn {
   padding: 0.9rem 1.5rem;
-  background: var(--submit-gradient);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
   border: none;
   border-radius: 999px;
@@ -90,12 +122,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px var(--submit-shadow);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .submitBtn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 128, 38, 0.28);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
 }
 
 .submitBtn:disabled {
@@ -121,114 +153,50 @@
   font-weight: 500;
 }
 
-/* Info Section */
-.infoSection {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* 🔹 Responsive Design */
+@media (max-width: 992px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
 }
 
-.infoCard {
-  padding: 1.5rem;
-  background: #f9fafb;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-}
-
-.infoCard h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
-}
-
-.infoCard p {
-  margin-bottom: 0.5rem;
-  color: #6b6b6b;
-  font-size: 0.95rem;
-}
-
-.infoCard a {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.infoCard a:hover {
-  color: #10b981;
-}
-
-.socialLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.socialLink {
-  display: inline-block;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.5rem 0;
-  border-bottom: 2px solid transparent;
-}
-
-.socialLink:hover {
-  color: var(--secondary);
-  border-bottom-color: var(--secondary);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .container {
-    padding: 2rem 1rem;
+  .heroSection {
+    padding: 6rem 1rem 3rem;
   }
 
-  .header h1 {
-    font-size: 1.75rem;
+  .heroTitle {
+    font-size: 2rem;
   }
 
-  .content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .heroSubtitle {
+    font-size: 1.1rem;
   }
 
   .formSection {
     padding: 1.5rem;
   }
-
-  .infoCard {
-    padding: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 1.5rem 1rem;
+  .heroSection {
+    padding: 5rem 1rem 2.5rem;
   }
 
-  .header h1 {
-    font-size: 1.5rem;
+  .heroTitle {
+    font-size: 1.75rem;
   }
 
-  .header p {
+  .heroSubtitle {
     font-size: 1rem;
   }
 
-  .formGroup {
-    gap: 0.4rem;
-  }
-
-  .input,
-  .textarea {
-    padding: 0.65rem 0.75rem;
-    font-size: 0.95rem;
+  .formSection {
+    padding: 1.25rem;
   }
 
   .submitBtn {
-    padding: 0.75rem 1rem;
     font-size: 1rem;
+    padding: 0.75rem 1.25rem;
   }
 }

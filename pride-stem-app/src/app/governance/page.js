@@ -17,15 +17,6 @@ export default function GovernancePage() {
             {/* Hero Section */}
             <motion.section className={styles.heroSection} {...fadeInUp}>
                 <div className={styles.heroContent}>
-                    <motion.div 
-                        className={styles.badge}
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Non-Profit Excellence
-                    </motion.div>
                     <h1 className={styles.heroTitle}>
                         Governance & Organization
                     </h1>

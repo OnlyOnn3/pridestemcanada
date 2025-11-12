@@ -20,44 +20,29 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import styles from "./contact.module.css";
 
+const fadeInUp = {
+  initial: { y: 40, opacity: 0 },
+  whileInView: { y: 0, opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
 export default function ContactPage() {
-  /**
-   * Form state - stores email and message values
-   */
   const [form, setForm] = useState({ email: "", message: "" });
-  
-  /**
-   * Status state - tracks form submission state
-   * Values: "" (initial) | "sending" (in progress) | "success" | "error"
-   */
   const [status, setStatus] = useState("");
 
-  /**
-   * Handle input field changes
-   * Updates the form state as user types
-   * 
-   * @param {Event} e - The input change event
-   */
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  /**
-   * Handle form submission
-   * Sends contact form data to API endpoint
-   * 
-   * @param {Event} e - The form submit event
-   */
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setStatus("sending"); // Show loading state
+    e.preventDefault();
+    setStatus("sending");
 
     try {
-      // === SEND TO API ENDPOINT ===
-      // POST request to contact API with email and message
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -66,41 +51,39 @@ export default function ContactPage() {
 
       const data = await res.json();
 
-      // === HANDLE RESPONSE ===
       if (res.ok) {
-        // Success - emails sent
         setStatus("success");
-        setForm({ email: "", message: "" }); // Clear form
+        setForm({ email: "", message: "" });
       } else {
-        // Error from API
         setStatus("error");
         console.error(data.error);
       }
     } catch (err) {
-      // Network or unexpected error
       setStatus("error");
       console.error(err);
     }
   };
 
   return (
-    <div className={styles.container}>
-      
-      {/* === HEADER SECTION === */}
-      <div className={styles.header}>
-        <h1>Get in Touch</h1>
-        <p>Have a question? We'd love to hear from you. Send us a message!</p>
-      </div>
+    <div className={styles.contactPage}>
+      {/* 🔹 Hero Section */}
+      <motion.section className={styles.heroSection} {...fadeInUp}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Get in Touch</h1>
+          <p className={styles.heroSubtitle}>
+            Have a question or want to get involved? We’d love to hear from you.
+          </p>
+        </div>
+      </motion.section>
 
-      <div className={styles.content}>
-        
-        {/* === CONTACT FORM SECTION === */}
+      {/* 🔹 Contact Form */}
+      <motion.section className={styles.formSectionWrapper} {...fadeInUp}>
         <div className={styles.formSection}>
           <form onSubmit={handleSubmit} className={styles.form}>
-            
-            {/* Email Input */}
             <div className={styles.formGroup}>
-              <label htmlFor="email" className={styles.label}>Email Address</label>
+              <label htmlFor="email" className={styles.label}>
+                Email Address
+              </label>
               <input
                 type="email"
                 name="email"
@@ -113,9 +96,10 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Message Textarea */}
             <div className={styles.formGroup}>
-              <label htmlFor="message" className={styles.label}>Message</label>
+              <label htmlFor="message" className={styles.label}>
+                Message
+              </label>
               <textarea
                 name="message"
                 id="message"
@@ -128,8 +112,6 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Submit Button */}
-            {/* Disabled during submission to prevent duplicate sends */}
             <button
               type="submit"
               disabled={status === "sending"}
@@ -138,14 +120,12 @@ export default function ContactPage() {
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* Success Message */}
             {status === "success" && (
               <div className={styles.successMessage}>
                 Message sent! We'll get back to you soon.
               </div>
             )}
 
-            {/* Error Message */}
             {status === "error" && (
               <div className={styles.errorMessage}>
                 Something went wrong. Please try again later.
@@ -153,44 +133,7 @@ export default function ContactPage() {
             )}
           </form>
         </div>
-
-        {/* === CONTACT INFORMATION SECTION === */}
-        {/* Display organization contact details and office hours */}
-        <div className={styles.infoSection}>
-          
-          {/* Contact Info Card */}
-          <div className={styles.infoCard}>
-            <h3>Contact Info</h3>
-            <p>
-              <strong>Email:</strong><br />
-              <a href="mailto:info@pridestecanada.com">info@pridestecanada.com</a>
-            </p>
-            <p>
-              <strong>Location:</strong><br />
-              Toronto, Canada
-            </p>
-          </div>
-
-          {/* Office Hours Card */}
-          <div className={styles.infoCard}>
-            <h3>Office Hours</h3>
-            <p>
-              Monday - Friday<br />
-              9:00 AM - 5:00 PM EST
-            </p>
-          </div>
-
-          {/* Social Media Links Card */}
-          <div className={styles.infoCard}>
-            <h3>Follow Us</h3>
-            <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialLink}>Facebook</a>
-              <a href="#" className={styles.socialLink}>Twitter</a>
-              <a href="#" className={styles.socialLink}>Instagram</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </motion.section>
     </div>
   );
 }

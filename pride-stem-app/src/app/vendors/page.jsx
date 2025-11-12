@@ -92,45 +92,16 @@ export default function VendorPage() {
         <div className={styles.container}>
             {/* Header */}
             <div className={styles.header}>
-                <h1>Become a Sponsor</h1>
-                <p>Partner with Pride STEM Canada and support the next generation of LGBTQ2+ professionals in STEM.</p>
+                <h1>Become a Vendor</h1>
+                <p>Want to be a vendor at our 2026 Conference? Contact us!</p>
             </div>
 
             <div className={styles.content}>
-                {/* Benefits Section */}
-                <div className={styles.benefitsSection}>
-                    <h2>Sponsorship Benefits</h2>
-                    <div className={styles.benefitsGrid}>
-                        {[
-                            {
-                                title: "Network with Talent",
-                                desc: "Connect with 500+ talented LGBTQ2+ professionals and students in STEM"
-                            },
-                            {
-                                title: "Brand Visibility",
-                                desc: "Showcase your company's commitment to diversity and inclusion"
-                            },
-                            {
-                                title: "Speaking Opportunities",
-                                desc: "Present your company or research to an engaged audience"
-                            },
-                            {
-                                title: "Meaningful Impact",
-                                desc: "Support initiatives that celebrate and advance LGBTQ2+ voices in STEM"
-                            },
-                        ].map((benefit, idx) => (
-                            <div key={idx} className={styles.benefitCard}>
-                                <h3>{benefit.title}</h3>
-                                <p>{benefit.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+               
 
                 {/* Form Section */}
                 <div className={styles.formWrapper}>
                     <div className={styles.formSection}>
-                        <h2>Tell Us About Your Organization</h2>
                         <form onSubmit={handleSubmit} className={styles.form}>
                             <div className={styles.formGroup}>
                                 <label htmlFor="email" className={styles.label}>Email Address</label>
@@ -155,7 +126,7 @@ export default function VendorPage() {
                                     required
                                     value={form.message}
                                     onChange={handleChange}
-                                    placeholder="Tell us about your organization, sponsorship interests, and how you'd like to support Pride STEM..."
+                                    placeholder="Tell us about your organization, interests, and how you'd like to support Pride STEM..."
                                     className={styles.textarea}
                                 />
                             </div>

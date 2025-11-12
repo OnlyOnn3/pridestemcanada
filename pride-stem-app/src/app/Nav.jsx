@@ -36,10 +36,9 @@ export default function Nav() {
     const items = [
         { href: "/", label: "Home" },
         { href: "/about", label: "About" },
-        { href: "/register", label: "Conference" },
         { href: "/governance", label: "Governance" },
-        { href: "/vendors", label: "Sponsors" },
-        { href: "/contact", label: "Contact" },
+        { href: "/conference", label: "Conference" },
+        { href: "/contact", label: "Contact Us" },
     ];
 
     /**
@@ -54,14 +53,14 @@ export default function Nav() {
                 {/* Logo Section - Links back to homepage */}
                 <Link href="/" className={styles.navBrand}>
                     <Image
-                        src="/img/pride-in-stem.png"  
+                        src="/img/heart-logo.png"  
                         alt="Pride STEM Canada Logo"
                         width={50} 
                         height={45}
                         priority // Load logo immediately for better performance
                         className={styles.logo}
                     />
-                    <span className={styles.brandText}>Pride STEM</span>
+                    <span className={styles.brandText}>Pride in STEM</span>
                 </Link>
 
                 {/* Mobile Hamburger Menu Toggle Button */}
