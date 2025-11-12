@@ -82,10 +82,10 @@ export default function AboutPage() {
                     <p>Be part of Canada's growing 2SLGBTQ+ STEM network</p>
                     <div className={styles.ctaButtons}>
                         <Link href="/register" className={styles.primaryButton}>
-                            Register for Conference
+                            Attend the Conference
                         </Link>
-                        <Link href="/contact" className={styles.secondaryButton}>
-                            Get in Touch
+                        <Link href="/contact" className={styles.primaryButton}>
+                            Contact Us
                         </Link>
                     </div>
                 </div>

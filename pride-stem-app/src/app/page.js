@@ -30,7 +30,7 @@ const fadeInUp = {
 export default function HomePage() {
   return (
     <div className={styles.homepage}>
-      {/* 🔹 Hero Section - Unified with Contact Page */}
+      {/* Hero Section*/}
       <motion.section className={styles.heroSection} {...fadeInUp}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
@@ -42,7 +42,7 @@ export default function HomePage() {
           </p>
 
           <div className={styles.heroCTA}>
-            <Link href="/about" className={styles.ctaPrimary}>
+            <Link href="/about" className={styles.primaryButton}>
               Learn More
             </Link>
           </div>

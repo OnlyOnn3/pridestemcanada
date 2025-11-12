@@ -1,66 +1,44 @@
+/* About Page Container */
 .aboutPage {
     width: 100%;
     min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
 }
 
-/* Page Header - Clean, Minimalistic */
+/* ===========================
+   Page Header
+=========================== */
 .pageHeader {
     padding: 8rem 1rem 4rem;
     background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    text-align: center;
     position: relative;
-    overflow: hidden;
     border-bottom: 1px solid #e5e7eb;
 }
 
 .pageHeader::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: 
-        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
     pointer-events: none;
 }
 
 .headerContent {
     max-width: 900px;
     margin: 0 auto;
-    text-align: center;
     position: relative;
     z-index: 1;
-}
-
-.badge {
-    display: inline-block;
-    padding: 0.6rem 1.5rem;
-    background: rgba(59, 130, 246, 0.08);
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #1e40af;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 .pageTitle {
     font-size: 3.5rem;
     font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: #111827;
-    letter-spacing: -0.02em;
-}
-
-.gradientText {
-    background: linear-gradient(135deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .pageSubtitle {
@@ -72,44 +50,38 @@
     font-weight: 400;
 }
 
-/* Mission & Vision Section */
+
+/* ===========================
+   Mission & Vision Section
+=========================== */
 .missionVisionSection {
     padding: 5rem 1rem;
-    background: #ffffff;
+    background: #f9fafb;
 }
 
 .sectionContainer {
-    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 2rem;
-}
-
-.sectionTitle {
-    font-size: 2.75rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 3.5rem;
-    color: #111827;
-    letter-spacing: -0.02em;
 }
 
 .mvGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 3rem;
 }
 
-/* Updated MV Card with rainbow border */
 .mvCard {
     position: relative;
     padding: 3rem;
-    background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Rainbow border using pseudo-element */
+/* Rainbow glow effect */
 .mvCard::before {
     content: '';
     position: absolute;
@@ -118,44 +90,37 @@
     right: -2px;
     bottom: -2px;
     border-radius: 18px;
-    padding: 2px;
-    background: linear-gradient(90deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    pointer-events: none;
+    background: linear-gradient(135deg, #E40303, #FF8C00, #FFED00, #008026, #004DFF, #750787);
+    opacity: 0.4;
+    filter: blur(10px);
     z-index: 0;
 }
 
-/* Ensure content is above rainbow border */
 .mvCard > * {
     position: relative;
     z-index: 1;
 }
 
 .mvCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: transparent;
-}
-
-.mvIcon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    /* Slightly stronger glow on hover */
+    &::before {
+        opacity: 0.6;
+        filter: blur(15px);
+    }
 }
 
 .mvCard h2 {
     font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
     color: #111827;
 }
 
 .mvCard p {
     font-size: 1.05rem;
-    color: #4b5563;
+    color: #374151;
     line-height: 1.7;
     margin-bottom: 1.5rem;
 }
@@ -167,269 +132,28 @@
 }
 
 .mvList li {
-    padding: 0.75rem 0 0.75rem 2rem;
+    padding-left: 2rem;
     position: relative;
     font-size: 1rem;
-    color: #6b7280;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
 }
 
 .mvList li::before {
     content: '✓';
     position: absolute;
     left: 0;
-    color: #10b981;
+    color: #2563eb;
     font-weight: 700;
-    font-size: 1.2rem;
 }
 
-/* Story Section */
-.storySection {
-    padding: 5rem 1rem;
-    background: #f9fafb;
-}
 
-.storyContent {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.storyCard {
-    padding: 2.5rem;
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.storyCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-}
-
-.storyYear {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    color: white;
-    border-radius: 999px;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
-}
-
-.storyCard h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #111827;
-}
-
-.storyCard p {
-    font-size: 1rem;
-    color: #6b7280;
-    line-height: 1.7;
-    margin: 0;
-}
-
-/* What We Do Section */
-.whatWeDoSection {
-    padding: 5rem 1rem;
-    background: #ffffff;
-}
-
-.activitiesGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.activityCard {
-    padding: 2.5rem;
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.activityCard::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
-    transform: scaleX(0);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.activityCard:hover::before {
-    transform: scaleX(1);
-}
-
-.activityCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: #d1d5db;
-}
-
-.activityIcon {
-    font-size: 3.5rem;
-    margin-bottom: 1.25rem;
-    transition: transform 0.3s ease;
-}
-
-.activityCard:hover .activityIcon {
-    transform: scale(1.15) rotate(5deg);
-}
-
-.activityCard h3 {
-    font-size: 1.35rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #111827;
-}
-
-.activityCard p {
-    font-size: 1rem;
-    color: #6b7280;
-    line-height: 1.7;
-    margin: 0;
-}
-
-/* Impact Stats Section */
-.impactSection {
-    padding: 5rem 1rem;
-    background: #f9fafb;
-}
-
-.statsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.statCard {
-    padding: 3rem 2rem;
-    background: #ffffff;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
-    transition: all 0.3s ease;
-}
-
-.statCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-}
-
-.statNumber {
-    font-size: 3.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-    line-height: 1;
-}
-
-.statLabel {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #6b7280;
-}
-
-/* Values Section */
-.valuesSection {
-    padding: 5rem 1rem;
-    background: #ffffff;
-}
-
-.valuesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.valueCard {
-    padding: 2.5rem;
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.valueCard::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
-    transform: scaleX(0);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.valueCard:hover::before {
-    transform: scaleX(1);
-}
-
-.valueCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    border-color: #d1d5db;
-}
-
-.valueIcon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.valueCard:hover .valueIcon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.valueCard h3 {
-    font-size: 1.35rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #111827;
-}
-
-.valueCard p {
-    font-size: 0.95rem;
-    color: #6b7280;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* CTA Section */
+/* ===========================
+   CTA Section
+=========================== */
 .ctaSection {
     padding: 6rem 1rem;
-    background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+    background: linear-gradient(180deg, #f9fafb, #ffffff);
     text-align: center;
     border-top: 1px solid #e5e7eb;
 }
@@ -444,7 +168,6 @@
     font-weight: 700;
     margin-bottom: 1rem;
     color: #111827;
-    letter-spacing: -0.02em;
 }
 
 .ctaContent p {
@@ -461,59 +184,28 @@
 }
 
 .primaryButton {
-    padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-    display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  display: inline-block;
 }
 
 .primaryButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
-    color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
 }
 
-.secondaryButton {
-    padding: 1rem 2.5rem;
-    background: transparent;
-    color: #2563eb;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    border: 2px solid #2563eb;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.secondaryButton:hover {
-    background: #2563eb;
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Responsive Design */
+/* ===========================
+   Responsive Design
+=========================== */
 @media (max-width: 992px) {
-    .pageTitle {
-        font-size: 2.75rem;
-    }
-
     .mvGrid {
         grid-template-columns: 1fr;
-    }
-
-    .statsGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .activitiesGrid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -530,35 +222,8 @@
         font-size: 1.1rem;
     }
 
-    .sectionTitle {
-        font-size: 2.25rem;
-    }
-
-    .mvCard {
-        padding: 2rem;
-    }
-
-    .mvIcon {
-        font-size: 3rem;
-    }
-
-    .mvCard h2 {
-        font-size: 1.85rem;
-    }
-
-    .storyContent,
-    .activitiesGrid,
-    .valuesGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .statsGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-
     .ctaContent h2 {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .ctaButtons {
@@ -578,11 +243,6 @@
         padding: 5rem 1rem 2.5rem;
     }
 
-    .badge {
-        font-size: 0.85rem;
-        padding: 0.5rem 1.25rem;
-    }
-
     .pageTitle {
         font-size: 1.85rem;
     }
@@ -591,53 +251,7 @@
         font-size: 1rem;
     }
 
-    .sectionTitle {
-        font-size: 1.85rem;
-    }
-
     .mvCard {
-        padding: 1.75rem;
-    }
-
-    .mvIcon {
-        font-size: 2.5rem;
-    }
-
-    .mvCard h2 {
-        font-size: 1.65rem;
-    }
-
-    .storyCard,
-    .activityCard,
-    .valueCard {
         padding: 2rem;
     }
-
-    .activityIcon,
-    .valueIcon {
-        font-size: 2.75rem;
-    }
-
-    .statCard {
-        padding: 2rem 1.5rem;
-    }
-
-    .statNumber {
-        font-size: 3rem;
-    }
-
-    .statsGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .ctaContent h2 {
-        font-size: 1.85rem;
-    }
-
-    .ctaContent p {
-        font-size: 1.1rem;
-    }
-
-    .primaryButton,
-    .secondaryButton {
-        font-size: 1.
+}
