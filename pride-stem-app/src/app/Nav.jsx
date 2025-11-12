@@ -60,7 +60,7 @@ export default function Nav() {
                         priority // Load logo immediately for better performance
                         className={styles.logo}
                     />
-                    <span className={styles.brandText}>Pride in STEM</span>
+                    <span className={styles.brandText}>Pride STEM Canada</span>
                 </Link>
 
                 {/* Mobile Hamburger Menu Toggle Button */}
