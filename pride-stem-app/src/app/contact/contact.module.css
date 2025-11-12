@@ -112,27 +112,21 @@
 }
 
 /* 🔹 Button + Messages */
-.submitBtn {
-  padding: 0.9rem 1.5rem;
+.primaryButton {
+  padding: 1rem 2.5rem;
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
-  border: none;
-  border-radius: 999px;
-  font-size: 1.1rem;
+  border-radius: 8px;
   font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  display: inline-block;
 }
 
-.submitBtn:hover:not(:disabled) {
+.primaryButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-}
-
-.submitBtn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
 }
 
 .successMessage {
@@ -195,7 +189,7 @@
     padding: 1.25rem;
   }
 
-  .submitBtn {
+  .primaryButton {
     font-size: 1rem;
     padding: 0.75rem 1.25rem;
   }

@@ -115,7 +115,7 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className={styles.submitBtn}
+              className={styles.primaryButton}
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>
