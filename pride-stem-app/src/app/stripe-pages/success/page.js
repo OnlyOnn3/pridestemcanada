@@ -23,18 +23,31 @@ export default function Success() {
           });
         });
 
-      const response = await fetch('/api/resend-api/send-email', { method: 'POST' });
-      if (!response.ok) {
-        console.error('Failed to send confirmation email');
-      }
+        
+    
+           await fetch('/api/resend-api/send-email', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              to: process.env.RESEND_SANDBOX_EMAIL,
+              subject: "PRIDE IN STEM CANADA Registration Confirmation",
+              html: `
+                <h2>Registration Confirmed</h2>
+                <p>Dear ${'firstName'} ${'lastname'},</p>
+                <p>Thank you for registering as a <strong>${'occupation'}</strong>.</p>
+                <p>We look forward to seeing you at the event!</p>
+                <br/>
+                <p>Best,<br/>PrideStemIforgot...</p>
+              `
+            }),
+        });
+
+      
 
     } catch (error) {
       console.error('Error finalizing registration or sending email:', error);
     }
-      
-
-    }
-    
+  }
 
     finalizeRegistration();
     
