@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { env } from "process";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -7,15 +8,15 @@ export async function POST(request) {
   try {
     const { occupation } = await request.json();
 
-    const prices = {
-      student: 5000, 
-      postdoc: 10000,
-      faculty: 20000,
+    const id = {
+     student: process.env.PRICE_ID_STUDENT,
+      postdoc: process.env.PRICE_ID_POSTDOC,
+      faculty: process.env.PRICE_ID_FACULTY,
     };
 
-    const amount = prices[occupation] || 0;
+    const paymentType = id[occupation];
 
-    if (!amount) {
+    if (!paymentType) {
       return NextResponse.json({ error: "Invalid occupation selected" }, { status: 400 });
     }
 
@@ -25,13 +26,7 @@ export async function POST(request) {
       mode: "payment",
       line_items: [
         {
-          price_data: {
-            currency: "cad",
-            product_data: {
-              name: `${occupation} Registration`,
-            },
-            unit_amount: amount,
-          },
+          price: paymentType,
           quantity: 1,
         },
       ],
