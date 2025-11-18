@@ -33,14 +33,25 @@ export default function Nav() {
      * - href: The URL path the link points to
      * - label: The text displayed in the navigation menu
      */
-    const items = [
-        { href: "/", label: "Home" },
-        { href: "/about", label: "About" },
-        { href: "/governance", label: "Governance" },
-        { href: "/conference", label: "Conference" },
-        { href: "/contact", label: "Contact Us" },
-    ];
+ const items = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/governance", label: "Governance" },
 
+    {
+        href: "/conference",
+        label: "Conference",
+        children: [
+            { href: "/register", label: "Register" },
+            { href: "/schedule", label: "Schedule" },
+            { href: "/present", label: "Present" },
+            { href: "/partner", label: "Partner" },
+            { href: "/contact", label: "Contact" }
+        ]
+    },
+
+    { href: "/contact", label: "Contact Us" },
+];
     /**
      * Toggle the mobile menu open/closed
      * Called when the hamburger icon is clicked on mobile devices
@@ -68,33 +79,66 @@ export default function Nav() {
                 <button 
                     className={styles.mobileToggle}
                     onClick={toggleMenu}
-                    aria-label="Toggle menu" // Accessibility label for screen readers
-                    aria-expanded={isOpen} // Tells screen readers if menu is open
+                    aria-label="Toggle menu" 
+                    aria-expanded={isOpen} 
                 >
                     {/* Hamburger icon - has 'active' class when menu is open */}
                     <span className={`${styles.hamburger} ${isOpen ? styles.active : ""}`}></span>
                 </button>
 
                 {/* Navigation Links Menu */}
-                {/* On mobile: hidden by default, shown when isOpen is true */}
-                {/* On desktop: always visible in horizontal layout */}
-                <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
-                    {items.map(({ href, label }) => (
-                        <li className={styles.navItem} key={href}>
+               <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
+                    {items.map(({ href, label, children }) => (
+                    <li 
+                        key={href}
+                        className={`${styles.navItem} ${children ? styles.hasDropdown : ""}`}
+                    >
+                {/* Dropdown functionality for Conference navigation item */}
+                    {children ? (
+                     <button
+                        className={`${styles.navLink} ${
+                        pathname === href ? styles.active : ""
+                        }`}
+                        onClick={(e) => {
+                        // Mobile toggle only
+                        e.preventDefault();
+                        e.currentTarget.parentElement.classList.toggle(styles.dropdownOpen);
+                         }}
+                     >
+                    {label}
+                    </button>
+                    ) : (
+                     /* otherwise use normal <Link> */
+                    <Link
+                        href={href}
+                        className={`${styles.navLink} ${
+                            pathname === href ? styles.active : ""
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                    >
+                        {label}
+                    </Link>
+                    )}
+
+            {/* Dropdown submenu (only for Conference) */}
+            {children && (
+                <ul className={styles.dropdownMenu}>
+                    {children.map((child) => (
+                        <li key={child.href}>
                             <Link
-                                href={href}
-                                // Highlight the link if it matches the current page
-                                className={`${styles.navLink} ${
-                                    pathname === href ? styles.active : ""
-                                }`}
-                                // Close mobile menu when a link is clicked
+                                href={child.href}
+                                className={styles.dropdownLink}
                                 onClick={() => setIsOpen(false)}
                             >
-                                {label}
+                                {child.label}
                             </Link>
                         </li>
                     ))}
                 </ul>
+            )}
+        </li>
+    ))}
+</ul>
             </div>
         </nav>
     );

@@ -49,7 +49,7 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* 🔹 Image Slider */}
+      {/* Image Slider */}
       <ImageSlider />
     </div>
   );

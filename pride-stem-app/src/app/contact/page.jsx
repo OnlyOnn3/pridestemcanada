@@ -66,7 +66,7 @@ export default function ContactPage() {
 
   return (
     <div className={styles.contactPage}>
-      {/* 🔹 Hero Section */}
+      {/* Hero Section */}
       <motion.section className={styles.heroSection} {...fadeInUp}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Get in Touch</h1>
@@ -76,7 +76,7 @@ export default function ContactPage() {
         </div>
       </motion.section>
 
-      {/* 🔹 Contact Form */}
+      {/* Contact Form */}
       <motion.section className={styles.formSectionWrapper} {...fadeInUp}>
         <div className={styles.formSection}>
           <form onSubmit={handleSubmit} className={styles.form}>

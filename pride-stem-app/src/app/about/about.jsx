@@ -14,7 +14,6 @@ const fadeInUp = {
 export default function AboutPage() {
     return (
         <div className={styles.aboutPage}>
-            {/* Page Header - Simple, Clean */}
             <motion.section className={styles.pageHeader} {...fadeInUp}>
                 <div className={styles.headerContent}>
                     <h1 className={styles.pageTitle}>

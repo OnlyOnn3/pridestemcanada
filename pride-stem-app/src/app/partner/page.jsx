@@ -25,8 +25,15 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import styles from "./vendors.module.css";
+import { motion } from "framer-motion";
+import styles from "./partner.module.css";
+
+const fadeInUp = {
+    initial: { y: 40, opacity: 0 },
+    whileInView: { y: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+};
 
 export default function PartnerPage() {
     /**
@@ -61,7 +68,7 @@ export default function PartnerPage() {
         setStatus("sending"); // Show loading state
 
         try {
-            // === SEND TO VENDOR API ENDPOINT ===
+            // Send to partner API endpoint
             // POST request to vendor API with sponsor's email and inquiry
             const res = await fetch("/api/vendor", {
                 method: "POST",
@@ -71,7 +78,7 @@ export default function PartnerPage() {
 
             const data = await res.json();
 
-            // === HANDLE RESPONSE ===
+            // Handle response
             if (res.ok) {
                 // Success - emails sent to both team and sponsor
                 setStatus("success");
@@ -89,71 +96,75 @@ export default function PartnerPage() {
     };
 
     return (
-        <div className={styles.container}>
-            {/* Header */}
-            <div className={styles.header}>
-                <h1>Become a Partner</h1>
-                <p>Want to be a vendor at our 2026 Conference? Contact us!</p>
-            </div>
-
-            <div className={styles.content}>
-               
-
-                {/* Form Section */}
-                <div className={styles.formWrapper}>
-                    <div className={styles.formSection}>
-                        <form onSubmit={handleSubmit} className={styles.form}>
-                            <div className={styles.formGroup}>
-                                <label htmlFor="email" className={styles.label}>Email Address</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    required
-                                    value={form.email}
-                                    onChange={handleChange}
-                                    placeholder="your@company.com"
-                                    className={styles.input}
-                                />
-                            </div>
-
-                            <div className={styles.formGroup}>
-                                <label htmlFor="message" className={styles.label}>Message</label>
-                                <textarea
-                                    name="message"
-                                    id="message"
-                                    rows="6"
-                                    required
-                                    value={form.message}
-                                    onChange={handleChange}
-                                    placeholder="Tell us about your organization, interests, and how you'd like to support Pride STEM..."
-                                    className={styles.textarea}
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                disabled={status === "sending"}
-                                className={styles.submitBtn}
-                            >
-                                {status === "sending" ? "Sending..." : "Submit Inquiry"}
-                            </button>
-
-                            {status === "success" && (
-                                <div className={styles.successMessage}>
-                                    Thank you! We'll contact you soon to discuss sponsorship opportunities.
-                                </div>
-                            )}
-
-                            {status === "error" && (
-                                <div className={styles.errorMessage}>
-                                    Something went wrong. Please try again later.
-                                </div>
-                            )}
-                        </form>
-                    </div>
+        <div className={styles.partnerPage}>
+            {/* Hero Section */}
+            <motion.section className={styles.heroSection} {...fadeInUp}>
+                <div className={styles.heroContent}>
+                    <h1 className={styles.heroTitle}>Become a Partner</h1>
+                    <p className={styles.heroSubtitle}>
+                        Want to be a vendor at our 2026 Conference? We'd love to hear from you and discuss partnership opportunities.
+                    </p>
                 </div>
-            </div>
+            </motion.section>
+
+            {/* Form Section */}
+            <motion.section className={styles.formSectionWrapper} {...fadeInUp}>
+                <div className={styles.formSection}>
+                    <form onSubmit={handleSubmit} className={styles.form}>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="email" className={styles.label}>
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                required
+                                value={form.email}
+                                onChange={handleChange}
+                                placeholder="your@company.com"
+                                className={styles.input}
+                            />
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label htmlFor="message" className={styles.label}>
+                                Message
+                            </label>
+                            <textarea
+                                name="message"
+                                id="message"
+                                rows="6"
+                                required
+                                value={form.message}
+                                onChange={handleChange}
+                                placeholder="Tell us about your organization, interests, and how you'd like to support Pride STEM..."
+                                className={styles.textarea}
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={status === "sending"}
+                            className={styles.primaryButton}
+                        >
+                            {status === "sending" ? "Sending..." : "Submit Inquiry"}
+                        </button>
+
+                        {status === "success" && (
+                            <div className={styles.successMessage}>
+                                Thank you! We'll contact you soon to discuss partnership opportunities.
+                            </div>
+                        )}
+
+                        {status === "error" && (
+                            <div className={styles.errorMessage}>
+                                Something went wrong. Please try again later.
+                            </div>
+                        )}
+                    </form>
+                </div>
+            </motion.section>
         </div>
     );
 }
