@@ -28,7 +28,7 @@ import { useState } from "react";
 import Link from "next/link";
 import styles from "./vendors.module.css";
 
-export default function VendorPage() {
+export default function PartnerPage() {
     /**
      * Form state - stores email and message values
      */
@@ -92,7 +92,7 @@ export default function VendorPage() {
         <div className={styles.container}>
             {/* Header */}
             <div className={styles.header}>
-                <h1>Become a Vendor</h1>
+                <h1>Become a Partner</h1>
                 <p>Want to be a vendor at our 2026 Conference? Contact us!</p>
             </div>
 

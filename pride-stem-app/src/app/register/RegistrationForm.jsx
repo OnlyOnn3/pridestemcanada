@@ -93,6 +93,8 @@ export default function RegistrationForm() {
             return;
         }
 
+     
+
         setIsLoading(true); // Show loading state to user
         
         try {

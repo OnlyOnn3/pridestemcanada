@@ -24,22 +24,22 @@ export default function ConferencePage() {
         </div>
       </motion.section>
  
-          {/* 🔹 Conference Action Buttons */}
+          {/* Conference Action Buttons */}
           <div className={styles.buttonGroup}>
-            <Link href="/contact" className={styles.heroButton}>
-              Contact Us
-            </Link>
-            <Link href="/partners" className={styles.heroButton}>
-              Partner With Us
-            </Link>
-            <Link href="/register" className={styles.heroButton}>
+             <Link href="/register" className={styles.heroButton}>
               Register
             </Link>
             <Link href="/schedule" className={styles.heroButton}>
               Schedule
             </Link>
-            <Link href="/present" className={styles.heroButton}>
+             <Link href="/present" className={styles.heroButton}>
               Present
+            </Link>
+            <Link href="/partner" className={styles.heroButton}>
+              Partner
+            </Link>
+            <Link href="/contact" className={styles.heroButton}>
+              Contact Us
             </Link>
           </div>
     </div>
