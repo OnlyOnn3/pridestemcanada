@@ -49,7 +49,7 @@ export default function Nav() {
             <div className={styles.navContainer}>
                 <Link href="/" className={styles.navBrand}>
                     <Image
-                        src="/img/pride-stem-logo.jpeg"  
+                        src="/img/heart-logo.png"  
                         alt="Pride STEM Canada Logo"
                         width={50} 
                         height={45}
@@ -75,16 +75,42 @@ export default function Nav() {
                             className={`${styles.navItem} ${children ? styles.hasDropdown : ""}`}
                         >
                             {children ? (
-                                /* Conference link - navigates on click, shows dropdown on hover */
-                                <Link
+                                /* Conference link with wrapper for hover */
+                                <>
+                                   <Link
                                     href={href}
                                     className={`${styles.navLink} ${
-                                        pathname === href ? styles.active : ""
+                                    pathname === href ? styles.active : ""
                                     }`}
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {label}
-                                </Link>
+                                        onClick={(e) => {
+                                            const isMobileOrTablet = window.innerWidth <= 1024;
+
+                                            if (isMobileOrTablet) {
+                                            e.preventDefault();
+                                            e.currentTarget.parentElement.classList.toggle(styles.dropdownOpen);
+                                            } else {
+                                                setIsOpen(false);
+                                            }
+                                            }}
+                                    >
+                                        {label}
+                                    </Link>
+
+                                    {/* Dropdown submenu - shown on hover (desktop) or click (mobile) */}
+                                    <ul className={styles.dropdownMenu}>
+                                        {children.map((child) => (
+                                            <li key={child.href}>
+                                                <Link
+                                                    href={child.href}
+                                                    className={styles.dropdownLink}
+                                                    onClick={() => setIsOpen(false)}
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
                             ) : (
                                 /* Regular navigation links */
                                 <Link
@@ -96,23 +122,6 @@ export default function Nav() {
                                 >
                                     {label}
                                 </Link>
-                            )}
-
-                            {/* Dropdown submenu */}
-                            {children && (
-                                <ul className={styles.dropdownMenu}>
-                                    {children.map((child) => (
-                                        <li key={child.href}>
-                                            <Link
-                                                href={child.href}
-                                                className={styles.dropdownLink}
-                                                onClick={() => setIsOpen(false)}
-                                            >
-                                                {child.label}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
                             )}
                         </li>
                     ))}
