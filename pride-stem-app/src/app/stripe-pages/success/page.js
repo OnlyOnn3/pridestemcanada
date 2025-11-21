@@ -1,26 +1,26 @@
 /**
  * Payment Success Page
- * 
+ *
  * This page is displayed after a successful Stripe payment.
  * It finalizes the registration by:
  * 1. Reading the session_id from the URL query parameter
  * 2. Finding the matching pending registration in Firebase
  * 3. Updating its status to "paid"
  * 4. Creating a new record in the main registrations collection
- * 
+ *
  * URL Format: /stripe-pages/success?session_id=cs_test_...
- * 
+ *
  * Firebase Collections Used:
  * - registrations_pending: Temporary storage before payment (status: "pending")
  * - registrations: Final storage after successful payment (status: "paid")
- * 
+ *
  * Flow:
  * 1. User completes payment on Stripe → Stripe redirects here with session_id
  * 2. useEffect runs on page load
  * 3. Finds pending registration by session_id
  * 4. Updates status to "paid" and adds timestamp
  * 5. Copies registration to main "registrations" collection
- * 
+ *
  * Note: This runs client-side. For production, consider using Stripe webhooks
  * for more reliable payment confirmation.
  */
@@ -42,14 +42,14 @@ export default function Success() {
         // URL format: /stripe-pages/success?session_id=cs_test_...
         const urlParams = new URLSearchParams(window.location.search);
         const sessionId = urlParams.get('session_id');
-        
+
         // If no session ID, user navigated here directly (not from Stripe)
         if (!sessionId) return;
-        
+
         // === STEP 2: Find the pending registration in Firebase ===
         // Query the registrations_pending collection for matching sessionId
         const q = query(
-          collection(db, "registrations_pending"), 
+          collection(db, "registrations_pending"),
           where("sessionId", "==", sessionId)
         );
         const querySnapshot = await getDocs(q);
@@ -59,11 +59,11 @@ export default function Success() {
         querySnapshot.forEach(async (document) => {
           // Update the status in the pending collection
           const docRef = doc(db, "registrations_pending", document.id);
-          await updateDoc(docRef, { 
+          await updateDoc(docRef, {
             status: "paid",      // Mark as paid
             paidAt: new Date()   // Record payment timestamp
           });
-          
+
           // === STEP 4: Copy to main registrations collection ===
           // Create a new document in the "registrations" collection
           // This is the permanent record of the completed registration
@@ -74,14 +74,36 @@ export default function Success() {
           });
         });
 
-      } catch (error) {
-        // Log any errors that occur during the process
-        console.error("Registration error.", error);
-      }
+
+
+           await fetch('/api/resend-api/send-email', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              to: process.env.RESEND_SANDBOX_EMAIL,
+              subject: "PRIDE IN STEM CANADA Registration Confirmation",
+              html: `
+                <h2>Registration Confirmed</h2>
+                <p>Dear ${'firstName'} ${'lastname'},</p>
+                <p>Thank you for registering as a <strong>${'occupation'}</strong>.</p>
+                <p>We look forward to seeing you at the event!</p>
+                <br/>
+                <p>Best,<br/>PrideStemIforgot...</p>
+              `
+            }),
+        });
+
+
+
+    } catch (error) {
+      // Log any errors that occur during the process
+        console.error('Error finalizing registration or sending email:', error);
     }
+  }
 
     // Run the finalization function when component mounts
     finalizeRegistration();
+
   }, []); // Empty dependency array = run once on mount
 
   return <h1>Payment Successful! Your registration is complete.</h1>;
