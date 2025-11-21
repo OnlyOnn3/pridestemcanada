@@ -31,7 +31,9 @@ export default function PresentPage() {
 
       <motion.section className={styles.formSectionWrapper} {...fadeInUp}>
         <div className={styles.presentSection}>
-        <p>Present here</p>
+        <p>We're proud to showcase a dynamic and diverse array of presentations at this year's 2SLGBTQ+ in STEM Conference. From groundbreaking keynote talks to engaging oral and poster presentations, our program highlights the innovation, brilliance, and interdisciplinary impact of 2SLGBTQ+ scholars and professionals in STEM.</p>
+        <p><b>Please note:</b> The poster and oral presentation schedules are still being finalized—check back soon for updates!</p>
+        <p>Click below to view the presenters in each category:</p>
         </div>
       </motion.section>
     </div>
