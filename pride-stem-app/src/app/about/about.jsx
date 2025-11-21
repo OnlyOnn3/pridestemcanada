@@ -20,7 +20,9 @@ export default function AboutPage() {
                       About Us
                     </h1>
                     <p className={styles.pageSubtitle}>
-                        Building an inclusive community where diverse voices drive innovation and shape the future of science, technology, engineering, and mathematics.
+                        Join us from January *insert date* to *insert date* , 2026, at Dalhousie, where we will expect to welcome over 250 delegates from across Canada. This conference will spotlight the latest research, hear inspiring success stories, and highlight emerging leaders within the 2SLGBTQ+ STEM community. 
+
+                        The diversification of STEM fields is essential if we are to mobilize talent in Canada, drive innovation and promote discovery across all scientific fields. The conference brings together leading experts, innovators, and changemakers to explore actionable strategies for dismantling barriers to 2SLGBTQ+ success in STEM. In addition to great science, we will also hear about increasing visibility, improving recruitment and retention of queer and trans scientists, and strategies to foster truly inclusive cultures in academia, industry, and beyond.
                     </p>
                 </div>
             </motion.section>
@@ -38,9 +40,7 @@ export default function AboutPage() {
                         >
                             <h2>Our Mission</h2>
                             <p>
-                                To create an inclusive space where 2SLGBTQ+ professionals and students in STEM 
-                                can connect, learn, and advance their careers. We foster diversity, equity, and 
-                                inclusion through education, networking, and professional development opportunities.
+                                Now in its sixth year, the 2SLGBTQ+ in STEM Conference is an annual nationwide event dedicated to celebrating and advancing the contributions of the 2SLGBTQ+ community in science, technology, engineering, and mathematics (STEM). Dedicated and passionate students from across Canada and across scientific disciplines will have the opportunity to connect with organizations seeking talent, thus helping to bridge existing talent gaps in various STEM and STEM-related fields.
                             </p>
                             <ul className={styles.mvList}>
                                 <li>Promote 2SLGBTQ+ visibility in STEM fields</li>
