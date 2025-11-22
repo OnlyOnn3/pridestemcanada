@@ -37,7 +37,7 @@ export default function HomePage() {
             Celebrating <span className={styles.gradientText}>2SLGBTQ+</span> in STEM
           </h1>
           <p className={styles.heroSubtitle}>
-            Join Canada’s premier conference for LGBTQ2+ professionals and students
+            Join Canada’s premier conference for 2SLGBTQ+ professionals and students
             in Science, Technology, Engineering, and Mathematics.
           </p>
 
