@@ -49,7 +49,7 @@ export default function Nav() {
             <div className={styles.navContainer}>
                 <Link href="/" className={styles.navBrand}>
                     <Image
-                        src="/img/heart-logo.png"  
+                        src="/img/pride-stem-logo.jpeg"  
                         alt="Pride STEM Canada Logo"
                         width={50} 
                         height={45}
