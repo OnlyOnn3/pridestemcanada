@@ -22,7 +22,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { db } from "../firebaseConfig";
 import { collection, query, where, getDocs, updateDoc, doc, addDoc } from "firebase/firestore";
-import RegistrationForm from "../register/page";
+import RegistrationForm from "../register";
 
 export default function ConferencePage() {
     const searchParams = useSearchParams();
