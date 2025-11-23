@@ -1,3 +1,4 @@
+"useclient";
 /**
  * Conference Page (Main Registration Page)
  * 
@@ -16,13 +17,12 @@
  * - /conference/contact - Conference-specific contact
  */
 
-'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { db } from "../firebaseConfig";
 import { collection, query, where, getDocs, updateDoc, doc, addDoc } from "firebase/firestore";
 import RegistrationForm from "../register/registrationForm";
+import { useSearchParams } from 'next/navigation';
 
 export default function ConferencePage() {
     const searchParams = useSearchParams();
