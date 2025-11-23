@@ -1,11 +1,10 @@
+"use client";
 /**
  * Partnership Opportunities Page
  * 
  * Information for organizations interested in partnering with Pride STEM Canada Conference.
  * Route: /conference/partner
  */
-
-"use client";
 
 import styles from "../../register/register.module.css";
 

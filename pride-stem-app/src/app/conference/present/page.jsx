@@ -1,3 +1,4 @@
+"use client";
 /**
  * Call for Presentations Page
  * 
@@ -5,7 +6,7 @@
  * Route: /conference/present
  */
 
-"use client";
+
 
 import styles from "../../register/register.module.css";
 

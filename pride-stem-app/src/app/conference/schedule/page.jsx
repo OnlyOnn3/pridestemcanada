@@ -1,3 +1,4 @@
+"use client";
 /**
  * Conference Schedule Page
  * 
@@ -5,7 +6,7 @@
  * Route: /conference/schedule
  */
 
-"use client";
+
 
 import styles from "../../register/register.module.css";
 

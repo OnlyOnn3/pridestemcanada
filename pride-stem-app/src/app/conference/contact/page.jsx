@@ -1,3 +1,4 @@
+"use client";
 /**
  * Conference Contact Page
  * 
@@ -5,7 +6,7 @@
  * Route: /conference/contact
  */
 
-"use client";
+
 
 import { useState } from "react";
 import styles from "../../register/register.module.css";
