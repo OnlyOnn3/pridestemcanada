@@ -1,4 +1,5 @@
-"useclient";
+"use client";
+
 /**
  * Conference Page (Main Registration Page)
  * 
