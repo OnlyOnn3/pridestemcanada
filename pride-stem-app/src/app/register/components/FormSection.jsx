@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import RegistrationForm from "../RegistrationForm";
+import RegistrationForm from "../registrationForm";
 import styles from "../../page.module.css";
 
 export default function FormSection() {
