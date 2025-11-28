@@ -1,9 +1,9 @@
-.conferenceAboutPage {
+/*.conferenceAboutPage {
   width: 100%;
   min-height: 100vh;
 }
-
-/* Hero Section */
+ 
+/* Hero Section 
 .heroSection {
   padding: 8rem 1rem 4rem;
   background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
@@ -11,7 +11,7 @@
   overflow: hidden;
   border-bottom: 1px solid #e5e7eb;
 }
-
+ 
 .heroSection::before {
   content: '';
   position: absolute;
@@ -24,7 +24,7 @@
     radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
   pointer-events: none;
 }
-
+ 
 .heroContent {
   max-width: 900px;
   margin: 0 auto;
@@ -32,7 +32,7 @@
   position: relative;
   z-index: 1;
 }
-
+ 
 .heroTitle {
   font-size: 3.5rem;
   font-weight: 800;
@@ -41,7 +41,7 @@
   color: #111827;
   letter-spacing: -0.02em;
 }
-
+ 
 .heroSubtitle {
   font-size: 1.25rem;
   color: #6b7280;
@@ -50,47 +50,175 @@
   margin: 0 auto;
   font-weight: 400;
 }
-
-
+ 
+ 
+/* Responsive Design 
+@media (max-width: 992px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 6rem 1rem 3rem;
+  }
+ 
+  .heroTitle {
+    font-size: 2rem;
+  }
+ 
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+ 
+  .formSection {
+    padding: 1.5rem;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 5rem 1rem 2.5rem;
+  }
+ 
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+ 
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+ 
+  .formSection {
+    padding: 1.25rem;
+  }
+   .formSectionWrapper{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+  } 
+  .presentSection {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    line-height: 1.8;
+  }
+ 
+  .presentSection p{
+    width: 100%;
+    padding: 10px;
+  }
+}*/
+ 
+ 
+ 
+.conferenceAboutPage {
+  width: 100%;
+  min-height: 100vh;
+}
+ 
+/* Hero Section */
+.heroSection {
+  padding: 8rem 1rem 4rem;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
+}
+ 
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+ 
+.heroContent {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+ 
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+ 
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+ 
+/* --- ABOUT SECTION STYLES --- */
+.formSectionWrapper {
+  max-width: 1200px; /* Limits the container width */
+  margin: 0 auto; /* Centers the container */
+  padding: 3rem 1rem; /* Adds vertical padding */
+}
+ 
+.presentSection {
+  max-width: 800px; /* Limits the text block width for readability */
+  margin: 0 auto; /* Centers the text block within the wrapper */
+  text-align: center; /* **THIS CENTERS THE TEXT** */
+  padding: 2rem;
+  line-height: 1.8;
+  color: #374151;
+  font-size: 1.1rem;
+}
+ 
+ 
 /* Responsive Design */
 @media (max-width: 992px) {
   .heroTitle {
     font-size: 2.5rem;
   }
 }
-
+ 
 @media (max-width: 768px) {
   .heroSection {
     padding: 6rem 1rem 3rem;
   }
-
+ 
   .heroTitle {
     font-size: 2rem;
   }
-
+ 
   .heroSubtitle {
     font-size: 1.1rem;
   }
-
-  .formSection {
-    padding: 1.5rem;
-  }
 }
-
+ 
+/* The media query below was overriding the desired centering, 
+   so it's been cleaned up to only include essential responsive changes. */
 @media (max-width: 480px) {
   .heroSection {
     padding: 5rem 1rem 2.5rem;
   }
-
+ 
   .heroTitle {
     font-size: 1.75rem;
   }
-
+ 
   .heroSubtitle {
     font-size: 1rem;
-  }
-
-  .formSection {
-    padding: 1.25rem;
   }
 }
