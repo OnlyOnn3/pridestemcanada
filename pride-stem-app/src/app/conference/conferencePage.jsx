@@ -72,7 +72,9 @@ export default function ConferencePage() {
             const querySnapshot = await getDocs(q);
 
             // Update each matching registration
-            querySnapshot.forEach(async (document) => {
+            for (const document of querySnapshot.docs) {
+                const registrationData = document.data();
+                
                 // Update the status in the pending collection
                 const docRef = doc(db, "registrations_pending", document.id);
                 await updateDoc(docRef, { 
@@ -82,11 +84,56 @@ export default function ConferencePage() {
                 
                 // Copy to main registrations collection
                 await addDoc(collection(db, "registrations"), {
-                    ...document.data(),
+                    ...registrationData,
                     status: "paid",
                     paidAt: new Date(),
                 });
-            });
+
+                // Send confirmation email
+                try {
+                    // In test mode, send to Resend's test email to avoid 403 errors
+                    // In production, send to the actual registrant's email
+                    const recipientEmail = process.env.NEXT_PUBLIC_TEST_MODE === 'true' 
+                        ? 'delivered@resend.dev' 
+                        : registrationData.email;
+                    
+                    const emailResponse = await fetch('/api/resend-api/send-email', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            to: recipientEmail,
+                            subject: "PRIDE IN STEM CANADA Registration Confirmation",
+                            html: `
+                                <h2>Registration Confirmed</h2>
+                                <p>Dear ${registrationData.name},</p>
+                                <p>Thank you for registering for the 6th Annual Canadian 2SLGBTQ+ in STEM Conference!</p>
+                                <p><strong>Registration Details:</strong></p>
+                                <ul>
+                                    <li>Name: ${registrationData.name}</li>
+                                    <li>Email: ${registrationData.email}</li>
+                                    <li>Category: ${registrationData.occupation}</li>
+                                    <li>Affiliation: ${registrationData.affiliation}</li>
+                                    ${registrationData.dietary ? `<li>Dietary Requirements: ${registrationData.dietary}</li>` : ''}
+                                </ul>
+                                <p>We look forward to seeing you at the conference in Toronto!</p>
+                                <br/>
+                                <p>Best regards,<br/>Pride in STEM Canada Team</p>
+                            `
+                        }),
+                    });
+
+                    if (!emailResponse.ok) {
+                        const errorText = await emailResponse.text();
+                        console.error('Email sending failed:', errorText);
+                        console.error('Status:', emailResponse.status);
+                    } else {
+                        const result = await emailResponse.json();
+                        console.log('Email sent successfully:', result);
+                    }
+                } catch (emailError) {
+                    console.error('Error sending confirmation email:', emailError);
+                }
+            }
         } catch (error) {
             console.error("Registration finalization error:", error);
         }
