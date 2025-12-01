@@ -94,7 +94,7 @@ export default function ConferencePage() {
                     // In test mode, send to Resend's test email to avoid 403 errors
                     // In production, send to the actual registrant's email
                     const recipientEmail = process.env.NEXT_PUBLIC_TEST_MODE === 'true' 
-                        ? 'delivered@resend.dev' 
+                        ? 'pridestemdatabase@gmail.com' 
                         : registrationData.email;
                     
                     const emailResponse = await fetch('/api/resend-api/send-email', {
