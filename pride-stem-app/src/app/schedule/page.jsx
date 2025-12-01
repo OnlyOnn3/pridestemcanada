@@ -5,7 +5,6 @@
 
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./schedule.module.css";
 
@@ -29,9 +28,19 @@ export default function SchedulePage() {
         </div>
       </motion.section>
 
-      <motion.section className={styles.formSectionWrapper} {...fadeInUp}>
-        <div className={styles.scheduleSection}>
-        <p>Schedule here</p>
+      <motion.section className={styles.heroSection} {...fadeInUp}>
+        <div className={styles.heroContent}>
+          <h2 className={styles.heroTitle}>
+            Registration
+          </h2>
+          <p className={styles.heroSubtitle}></p>
+          <h2 className={styles.heroTitle}>
+            Talks
+          </h2>
+          <p className={styles.heroSubtitle}>
+            The talks
+          </p>
+          <img src="/img/schedule.png" alt="test" />
         </div>
       </motion.section>
     </div>
