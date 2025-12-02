@@ -19,9 +19,16 @@ export default function AboutPage() {
                     <h1 className={styles.pageTitle}>
                       About Us
                     </h1>
-                    <p className={styles.pageSubtitle}>
-                        Join us from January *insert date* to *insert date* , 2026, at Dalhousie, where we will expect to welcome over 250 delegates from across Canada. This conference will spotlight the latest research, hear inspiring success stories, and highlight emerging leaders within the 2SLGBTQ+ STEM community. 
+                </div>
+            </motion.section>
 
+            {/* Description Section */}
+            <motion.section className={styles.descriptionSection} {...fadeInUp}>
+                <div className={styles.descriptionContainer}>
+                    <p className={styles.descriptionText}>
+                        Join us <strong>January 2026</strong> at Dalhousie University, where we will welcome over 250 delegates from across Canada. This conference will spotlight the latest research, hear inspiring success stories, and highlight emerging leaders within the 2SLGBTQ+ STEM community.
+                    </p>
+                    <p className={styles.descriptionText}>
                         The diversification of STEM fields is essential if we are to mobilize talent in Canada, drive innovation and promote discovery across all scientific fields. The conference brings together leading experts, innovators, and changemakers to explore actionable strategies for dismantling barriers to 2SLGBTQ+ success in STEM. In addition to great science, we will also hear about increasing visibility, improving recruitment and retention of queer and trans scientists, and strategies to foster truly inclusive cultures in academia, industry, and beyond.
                     </p>
                 </div>

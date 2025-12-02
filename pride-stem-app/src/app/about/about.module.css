@@ -6,11 +6,15 @@
 }
 
 .pageHeader {
-    padding: 8rem 1rem 4rem;
+    padding: 10rem 2rem 5rem;
     background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
     text-align: center;
     position: relative;
     border-bottom: 1px solid #e5e7eb;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pageHeader::before {
@@ -31,24 +35,61 @@
 }
 
 .pageTitle {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: #111827;
+    letter-spacing: -0.04em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .pageSubtitle {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     color: #6b7280;
-    line-height: 1.8;
-    max-width: 750px;
+    line-height: 1.85;
+    max-width: 800px;
     margin: 0 auto;
     font-weight: 400;
+    letter-spacing: -0.015em;
+}
+
+/* Description Section */
+.descriptionSection {
+    padding: 4rem 2rem;
+    background: #ffffff;
+}
+
+.descriptionContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.descriptionText {
+    font-size: 1.125rem;
+    color: #374151;
+    line-height: 1.85;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+}
+
+.descriptionText:last-child {
+    margin-bottom: 0;
+}
+
+.descriptionText strong {
+    color: #111827;
+    font-weight: 600;
 }
 
 .missionVisionSection {
-    padding: 5rem 1rem;
-    background: #f9fafb;
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
 }
 
 .sectionContainer {
@@ -65,12 +106,13 @@
 
 .mvCard {
     position: relative;
-    padding: 3rem;
-    border-radius: 16px;
+    padding: 3.5rem;
+    border-radius: 20px;
     overflow: hidden;
     background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 /* Rainbow glow effect */
@@ -94,12 +136,13 @@
 }
 
 .mvCard:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
-    &::before {
-        opacity: 0.6;
-        filter: blur(15px);
-    }
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.mvCard:hover::before {
+    opacity: 0.7;
+    filter: blur(18px);
 }
 
 .mvCard h2 {
@@ -172,20 +215,39 @@
 }
 
 .primaryButton {
-  padding: 1rem 2.5rem;
+  padding: 1.125rem 3rem;
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
+  font-size: 1.125rem;
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
   display: inline-block;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.01em;
 }
 
 .primaryButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+.primaryButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.primaryButton:hover::before {
+  left: 100%;
 }
 
 @media (max-width: 992px) {
@@ -205,6 +267,18 @@
 
     .pageSubtitle {
         font-size: 1.1rem;
+    }
+
+    .descriptionSection {
+        padding: 3rem 1.5rem;
+    }
+
+    .descriptionContainer {
+        padding: 2rem;
+    }
+
+    .descriptionText {
+        font-size: 1.05rem;
     }
 
     .ctaContent h2 {

@@ -1,86 +1,134 @@
-"use client";
 /**
- * Call for Presentations Page
+ * Present Page Component
  * 
- * Information for those interested in presenting at the Pride STEM Canada Conference.
- * Route: /conference/present
- */
+ **/
 
+"use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+import styles from "./present.module.css";
 
-import styles from "../../register/register.module.css";
+const fadeInUp = {
+  initial: { y: 40, opacity: 0 },
+  whileInView: { y: 0, opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
 
 export default function PresentPage() {
-    return (
-        <div className={styles.container}>
-            <div className={styles.header}>
-                <h1>Call for Presentations</h1>
-                <p>Share your research and experiences with the 2SLGBTQ+ STEM community</p>
-            </div>
-
-            <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-                <section style={{ marginBottom: '3rem' }}>
-                    <h2 style={{ color: '#1a1a1a', marginBottom: '1rem' }}>Present at Our Conference</h2>
-                    <p style={{ color: '#666', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                        We welcome presentations from students, researchers, and professionals across all STEM fields. 
-                        Share your research, insights, and experiences with our vibrant community.
-                    </p>
-                </section>
-
-                {/* Presentation Types */}
-                <section style={{ marginBottom: '3rem' }}>
-                    <h3 style={{ color: '#1a1a1a', marginBottom: '1rem' }}>Presentation Formats</h3>
-                    <div style={{ display: 'grid', gap: '1.5rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-                        <div style={{ 
-                            background: '#f9f9f9', 
-                            padding: '1.5rem', 
-                            borderRadius: '8px',
-                            border: '1px solid #e0e0e0'
-                        }}>
-                            <h4 style={{ marginBottom: '0.5rem' }}>Oral Presentations</h4>
-                            <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                                15-minute talks followed by Q&A. Perfect for sharing research findings and insights.
-                            </p>
-                        </div>
-                        <div style={{ 
-                            background: '#f9f9f9', 
-                            padding: '1.5rem', 
-                            borderRadius: '8px',
-                            border: '1px solid #e0e0e0'
-                        }}>
-                            <h4 style={{ marginBottom: '0.5rem' }}>Poster Sessions</h4>
-                            <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                                Display your research in an interactive poster format with one-on-one discussions.
-                            </p>
-                        </div>
-                        <div style={{ 
-                            background: '#f9f9f9', 
-                            padding: '1.5rem', 
-                            borderRadius: '8px',
-                            border: '1px solid #e0e0e0'
-                        }}>
-                            <h4 style={{ marginBottom: '0.5rem' }}>Workshops</h4>
-                            <p style={{ color: '#666', fontSize: '0.95rem' }}>
-                                Interactive 45-minute sessions on specific topics or skills.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Call to Action */}
-                <div style={{ 
-                    background: 'linear-gradient(135deg, rgba(228, 3, 3, 0.05), rgba(85, 205, 252, 0.05))',
-                    padding: '2rem', 
-                    borderRadius: '8px',
-                    border: '1px solid #e0e0e0',
-                    textAlign: 'center'
-                }}>
-                    <h3 style={{ marginBottom: '1rem' }}>Submission Details Coming Soon</h3>
-                    <p style={{ color: '#666', marginBottom: '1rem' }}>
-                        Abstract submission portal will open soon. Stay tuned for deadlines and submission guidelines.
-                    </p>
-                </div>
-            </div>
+  return (
+    <div className={styles.presentPage}>
+      {/* Hero Section */}
+      <motion.section className={styles.heroSection} {...fadeInUp}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Present Your Research</h1>
+          <p className={styles.heroSubtitle}>
+            Share your work and join Canada's most dynamic gathering of 2SLGBTQ+ STEM researchers
+          </p>
         </div>
-    );
+      </motion.section>
+
+      {/* Introduction */}
+      <motion.section className={styles.contentWrapper} {...fadeInUp}>
+        <div className={styles.contentSection}>
+          <p className={styles.leadText}>
+            We're proud to showcase a dynamic and diverse array of presentations at this year's 2SLGBTQ+ in STEM Conference. 
+            From groundbreaking keynote talks to engaging oral and poster presentations, our program highlights the innovation, 
+            brilliance, and interdisciplinary impact of 2SLGBTQ+ scholars and professionals in STEM. Submit your abstract today 
+            to join our community of outstanding researchers.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Presentation Types */}
+      <motion.section className={styles.cardsSection} {...fadeInUp}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.sectionTitle}>Presentation Formats</h2>
+          <div className={styles.cardsGrid}>
+            {[
+              { 
+                title: "Keynote Presentations", 
+                desc: "Featured talks by distinguished leaders addressing major themes in 2SLGBTQ+ STEM advancement and inclusion" 
+              },
+              { 
+                title: "Oral Presentations", 
+                desc: "15-20 minute research talks showcasing original work across all STEM disciplines with Q&A sessions" 
+              },
+              { 
+                title: "Poster Sessions", 
+                desc: "Interactive poster presentations allowing for in-depth discussions and networking with attendees" 
+              },
+              { 
+                title: "Lightning Talks", 
+                desc: "Fast-paced 5-minute presentations highlighting innovative ideas and early-stage research" 
+              },
+            ].map((card, idx) => (
+              <motion.div
+                key={idx}
+                className={styles.featureCard}
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <h3>{card.title}</h3>
+                <p>{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Benefits Section */}
+      <motion.section className={styles.benefitsSection} {...fadeInUp}>
+        <div className={styles.sectionContainer}>
+          <h2 className={styles.sectionTitle}>Why Present?</h2>
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitItem}>
+              <h4>Showcase Your Work</h4>
+              <p>Share your research with an engaged and supportive community</p>
+            </div>
+            <div className={styles.benefitItem}>
+            
+              <h4>Network & Collaborate</h4>
+              <p>Connect with potential collaborators and mentors in your field</p>
+            </div>
+            <div className={styles.benefitItem}>
+              <h4>Get Feedback</h4>
+              <p>Receive constructive feedback from peers and experts</p>
+            </div>
+            <div className={styles.benefitItem}>
+              <h4>Build Your CV</h4>
+              <p>Add conference presentations to your professional portfolio</p>
+            </div>
+            <div className={styles.benefitItem}>
+              <h4>Gain Visibility</h4>
+              <p>Increase your visibility in the 2SLGBTQ+ STEM community</p>
+            </div>
+            <div className={styles.benefitItem}>
+              <h4>Professional Development</h4>
+              <p>Develop your presentation and communication skills</p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* CTA Section */}
+      <motion.section className={styles.ctaSection} {...fadeInUp}>
+        <div className={styles.ctaContent}>
+          <h2>Ready to Present?</h2>
+          <p>Submit your abstract and join our community of outstanding researchers</p>
+          <div className={styles.ctaButtons}>
+            <a href="/conference/contact" className={styles.primaryButton}>
+              Submit Abstract
+            </a>
+            <a href="/conference/schedule" className={styles.secondaryButton}>
+              View Schedule
+            </a>
+          </div>
+        </div>
+      </motion.section>
+    </div>
+  );
 }

@@ -110,15 +110,30 @@
 }
 
 .valueCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
-  transform: scaleX(0);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+
+    /* SAME gradient as navbar border */
+    background: linear-gradient(90deg,
+    var(--pride-red),
+    var(--pride-orange),
+    var(--pride-yellow),
+    var(--pride-green),
+    var(--pride-blue),
+    var(--pride-purple),
+    var(--pride-light-blue),
+    var(--pride-pink),
+    var(--pride-brown),
+    var(--pride-black)
+    );
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .valueCard:hover::before {
@@ -300,12 +315,43 @@
   font-size: 0.95rem;
   transition: all 0.3s ease;
   border: 1px solid #e5e7eb;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--pride-red),
+    var(--pride-orange),
+    var(--pride-yellow),
+    var(--pride-green),
+    var(--pride-blue),
+    var(--pride-purple),
+    var(--pride-light-blue),
+    var(--pride-pink),
+    var(--pride-brown),
+    var(--pride-black)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.benefit:hover::before {
+  transform: scaleX(1);
 }
 
 .benefit:hover {
-  transform: translateX(4px);
+  transform: translateY(-4px);
   background: rgba(59, 130, 246, 0.08);
   border-color: #3b82f6;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 .benefitIcon {

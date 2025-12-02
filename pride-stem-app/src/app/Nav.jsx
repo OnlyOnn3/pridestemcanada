@@ -28,15 +28,15 @@ export default function Nav() {
         { href: "/about", label: "About" },
         { href: "/governance", label: "Governance" },
         {
-            href: "/conference_about",
+            href: "/conference/about",
             label: "Conference",
             children: [
-                { href: "/conference_about", label: "About" },
+                { href: "/conference/about", label: "About" },
                 { href: "/register", label: "Register" },
-                { href: "/schedule", label: "Schedule" },
-                { href: "/present", label: "Present" },
-                { href: "/partner", label: "Partner" },
-                { href: "/contact", label: "Contact" }
+                { href: "/conference/schedule", label: "Schedule" },
+                { href: "/conference/present", label: "Present" },
+                { href: "/conference/partner", label: "Partner" },
+                { href: "/conference/contact", label: "Contact" }
             ]
         },
         { href: "/contact", label: "Contact Us" },

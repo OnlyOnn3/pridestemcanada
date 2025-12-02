@@ -113,14 +113,12 @@ export default function GovernancePage() {
                                             <li>Elected Board of Directors</li>
                                             <li>Regular board and annual meetings</li>
                                             <li>Transparent decision-making</li>
-                                            <li>Conflict of interest policies</li>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div className={styles.noteBox}>
-                                    <strong>📄 Request Bylaws:</strong> Full bylaws are available to members. 
-                                    Contact us to request a copy.
+                                    <strong>Request Bylaws:</strong> Full bylaws are available to members. Contact us to request a copy.
                                 </div>
                             </div>
                         </motion.div>
@@ -153,9 +151,6 @@ export default function GovernancePage() {
                                     </div>
                                     <div className={styles.benefit}>
                                         <span>Standards & certification</span>
-                                    </div>
-                                    <div className={styles.benefit}>
-                                        <span>Expert resources</span>
                                     </div>
                                 </div>
                             </div>

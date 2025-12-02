@@ -122,8 +122,13 @@ export default function RegistrationPage() {
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Conference Registration</h1>
           <p className={styles.heroSubtitle}>
-            Join us for the 6th Annual Canadian 2SLGBTQ+ in STEM Conference in Toronto.
+            Join us in January 2026 at Dalhousie University, Halifax, Nova Scotia for Canada's premier 2SLGBTQ+ STEM gathering.
           </p>
+          <div className={styles.conferenceDetails}>
+            <span className={styles.detailBadge}>January 2026</span>
+            <span className={styles.detailBadge}>Dalhousie University, Halifax</span>
+            <span className={styles.detailBadge}>250+ Expected Delegates</span>
+          </div>
         </div>
       </motion.section>
 

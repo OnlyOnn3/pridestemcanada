@@ -23,6 +23,9 @@
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS for grid system and utilities
 import "./globals.css"; // Global custom styles
 import Nav from "./Nav"; // Navigation bar component
+import Footer from "./Footer"; // Footer component
+import BackToTop from "./BackToTop"; // Back to top button
+import Breadcrumb from "./Breadcrumb"; // Breadcrumb navigation
 
 /**
  * Metadata for the website
@@ -64,31 +67,22 @@ export default function RootLayout({ children }) {
         <main style={{ 
             flex: 1,               // Grow to fill available space
             width: '100%',
-            paddingTop: '2rem',    // Space above content
+            paddingTop: '0',       // No top padding - breadcrumb provides spacing
             paddingBottom: '2rem',  // Space below content
             backgroundColor: '#ffffff'  // Solid white background
         }}>
+            {/* Breadcrumb Navigation */}
+            <Breadcrumb />
+            
             {/* Full width content - no max-width constraint */}
             {children}
         </main>
 
         {/* === FOOTER SECTION === */}
-        {/* Displayed at the bottom of every page */}
-        {/* marginTop: 'auto' pushes it to bottom when content is short */}
-        <footer style={{
-            background: '#f9f9f9',      // Light gray background
-            textAlign: 'center',
-            color: '#666',
-            padding: '2rem 2rem',
-            marginTop: 'auto',          // Push to bottom of page
-            borderTop: '1px solid #e0e0e0',
-            width: '100%'
-        }}>
-            {/* Dynamic copyright year */}
-            <p style={{ margin: 0 }}>
-                © {new Date().getFullYear()} Pride STEM Canada. All rights reserved.
-            </p>
-        </footer>
+        <Footer />
+        
+        {/* Back to Top Button */}
+        <BackToTop />
         </body>
         </html>
     );

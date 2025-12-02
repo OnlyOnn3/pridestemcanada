@@ -20,15 +20,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import styles from "./contact.module.css";
-
-const fadeInUp = {
-  initial: { y: 40, opacity: 0 },
-  whileInView: { y: 0, opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0.6 },
-};
 
 export default function ContactPage() {
   const [form, setForm] = useState({ email: "", message: "" });
@@ -67,17 +59,17 @@ export default function ContactPage() {
   return (
     <div className={styles.contactPage}>
       {/* Hero Section */}
-      <motion.section className={styles.heroSection} {...fadeInUp}>
+      <section className={styles.heroSection}>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>Get in Touch</h1>
           <p className={styles.heroSubtitle}>
-            Have a question or want to get involved? We’d love to hear from you.
+            Have a question or want to get involved? We'd love to hear from you.
           </p>
         </div>
-      </motion.section>
+      </section>
 
       {/* Contact Form */}
-      <motion.section className={styles.formSectionWrapper} {...fadeInUp}>
+      <section className={styles.formSectionWrapper}>
         <div className={styles.formSection}>
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
@@ -117,7 +109,14 @@ export default function ContactPage() {
               disabled={status === "sending"}
               className={styles.primaryButton}
             >
-              {status === "sending" ? "Sending..." : "Send Message"}
+              {status === "sending" ? (
+                <span className={styles.buttonContent}>
+                  <span className={styles.spinner}></span>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
             </button>
 
             {status === "success" && (
@@ -133,7 +132,7 @@ export default function ContactPage() {
             )}
           </form>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
