@@ -28,18 +28,8 @@ export default function SchedulePage() {
         </div>
       </motion.section>
 
-      <motion.section className={styles.heroSection} {...fadeInUp}>
-        <div className={styles.heroContent}>
-          <h2 className={styles.heroTitle}>
-            Registration
-          </h2>
-          <p className={styles.heroSubtitle}></p>
-          <h2 className={styles.heroTitle}>
-            Talks
-          </h2>
-          <p className={styles.heroSubtitle}>
-            The talks
-          </p>
+      <motion.section className={styles.bodySection} {...fadeInUp}>
+        <div className={styles.bodyContent}>
           <img src="/img/schedule.png" alt="test" />
         </div>
       </motion.section>
