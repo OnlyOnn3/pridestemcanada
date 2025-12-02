@@ -33,12 +33,12 @@ export async function POST(request) {
 
       /**
        * Redirect URLs after payment
-       * Both success and failure redirect to /conference with query parameters
-       * The conference page will display appropriate alert based on payment status
+       * Success: Redirects back to register page with success query params
+       * Cancel: Redirects back to register page with failure query params
        * {CHECKOUT_SESSION_ID} is replaced by Stripe with actual session ID
        */
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/conference?payment=success&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/conference?payment=failure`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/register?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/register?payment=failure`,
     });
 
     return NextResponse.json({ sessionId: session.id });
