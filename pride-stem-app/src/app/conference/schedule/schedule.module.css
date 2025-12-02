@@ -1,0 +1,358 @@
+.schedulePage {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.heroSection {
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #111827;
+  letter-spacing: -0.04em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.heroSubtitle {
+  font-size: 1.35rem;
+  color: #6b7280;
+  line-height: 1.85;
+  max-width: 750px;
+  margin: 0 auto;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+/* Schedule Section */
+.scheduleWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  background: #ffffff;
+}
+
+.scheduleContainer {
+  width: 100%;
+}
+
+.scheduleHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.scheduleTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.scheduleDescription {
+  font-size: 1.125rem;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.scheduleImageCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.scheduleImageCard:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.scheduleImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.scheduleActions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.downloadButton,
+.registerButton {
+  padding: 1.125rem 3rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: -0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+.downloadButton {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.downloadButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+.registerButton {
+  background: #ffffff;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+.registerButton:hover {
+  background: #f0f7ff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+}
+
+/* Info Section */
+.infoSection {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 5rem 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.infoContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.infoTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.infoCard {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.infoCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--pride-red) 0%,
+    var(--pride-orange) 10%,
+    var(--pride-yellow) 20%,
+    var(--pride-green) 30%,
+    var(--pride-blue) 40%,
+    var(--pride-purple) 50%,
+    var(--pride-black) 60%,
+    var(--pride-brown) 70%,
+    var(--pride-light-blue) 80%,
+    var(--pride-pink) 90%,
+    var(--pride-white) 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.infoCard:hover::before {
+  transform: scaleX(1);
+}
+
+.infoCard:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.infoIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.infoCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.infoCard p {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .heroTitle {
+    font-size: 3rem;
+  }
+  
+  .scheduleTitle {
+    font-size: 2rem;
+  }
+  
+  .infoTitle {
+    font-size: 2rem;
+  }
+  
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 8rem 1.5rem 4rem;
+    min-height: 45vh;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .scheduleWrapper {
+    padding: 4rem 1.5rem;
+  }
+  
+  .scheduleImageCard {
+    padding: 1.5rem;
+  }
+  
+  .scheduleActions {
+    flex-direction: column;
+  }
+  
+  .downloadButton,
+  .registerButton {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .infoSection {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 7rem 1.25rem 3rem;
+    min-height: 40vh;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.05rem;
+  }
+
+  .scheduleWrapper {
+    padding: 3rem 1.25rem;
+  }
+  
+  .scheduleTitle {
+    font-size: 1.75rem;
+  }
+  
+  .scheduleDescription {
+    font-size: 1rem;
+  }
+  
+  .scheduleImageCard {
+    padding: 1rem;
+  }
+  
+  .downloadButton,
+  .registerButton {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .infoSection {
+    padding: 3rem 1.25rem;
+  }
+  
+  .infoTitle {
+    font-size: 1.75rem;
+  }
+  
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
