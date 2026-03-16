@@ -42,7 +42,10 @@ export async function POST(request) {
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/register?payment=failure`,
     });
 
-    return NextResponse.json({ url: session.url });
+    return NextResponse.json({
+      url: session.url,
+      sessionId: session.id
+});
   } catch (error) {
     console.error("Stripe checkout error:", error);
     return NextResponse.json(
