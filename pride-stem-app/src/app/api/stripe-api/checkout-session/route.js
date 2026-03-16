@@ -28,8 +28,9 @@ export async function POST(request) {
         {
           price: paymentType,
           quantity: 1,
-        },
+        },  
       ],
+      
 
       /**
        * Redirect URLs after payment
@@ -41,7 +42,7 @@ export async function POST(request) {
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/register?payment=failure`,
     });
 
-    return NextResponse.json({ sessionId: session.id });
+    return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error("Stripe checkout error:", error);
     return NextResponse.json(

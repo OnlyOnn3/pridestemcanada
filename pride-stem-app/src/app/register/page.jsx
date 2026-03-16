@@ -234,26 +234,23 @@ export default function RegistrationPage() {
       });
       const session = await response.json();
 
-      if (!response.ok) {
-        console.error("Stripe session error:", session.error);
-        setStatus("Payment initialization failed. Please try again.");
-        setIsLoading(false);
-        return;
-      }
+    if (!response.ok) {
+      console.error("Stripe session error:", session.error);
+      setStatus("Payment initialization failed. Please try again.");
+      setIsLoading(false);
+      return;
+    }
 
-      // Save pending registration to Firebase
-      await addDoc(collection(db, "registrations_pending"), {
-        ...formData,
-        status: "pending",
-        sessionId: session.sessionId,
-        createdAt: new Date(),
-      });
+    // Save pending registration
+    await addDoc(collection(db, "registrations_pending"), {
+      ...formData,
+      status: "pending",
+      sessionId: session.sessionId,
+      createdAt: new Date(),
+    });
 
-      // Redirect to Stripe checkout
-      const stripe = await stripePromise;
-      const { error: stripeError } = await stripe.redirectToCheckout({
-        sessionId: session.sessionId,
-      });
+    // Redirect to Stripe checkout
+    window.location.href = session.url;
       if (stripeError) {
         console.error("Stripe error", stripeError.message);
         setStatus("Payment error. Please try again.");
